@@ -7,25 +7,6 @@ void va_end(va_list ap);
 void va_copy(va_list dest, va_list src);
  */
 
-int 	ft_parse_flag(char *ss, int num)
-{
-	int 	i;
-
-	i = 0;
-	while (ss[++i] && i <= num)
-	{
-		if (ss[i] == '-')
-			return (1);
-		if (ss[i] == '0' && ss[i + 1] != '.')
-			return (2);
-		if (ss[i] == '+')
-			return (3);
-		if (ss[i] == '#')
-			return (4);
-	}
-	return (0);
-}
-
 int 		ft_pos_conver(char *s)
 {
 	int 	i;
@@ -53,6 +34,25 @@ int 		ft_pos_conver(char *s)
 			return (i);
 		if (s[i] == '%')
 			return (i);
+	}
+	return (0);
+}
+
+int 	ft_parse_flag(char *ss, int num)
+{
+	int 	i;
+
+	i = 0;
+	while (ss[++i] && i <= num)
+	{
+		if (ss[i] == '-')
+			return (1);
+		if (ss[i] == '0' && ss[i + 1] != '.')
+			return (2);
+		if (ss[i] == '+')
+			return (3);
+		if (ss[i] == '#')
+			return (4);
 	}
 	return (0);
 }
@@ -88,18 +88,18 @@ int 		ft_first_conver(char *s)
 	return (0);
 }
 
-int			ft_format(char *ss, va_list arg)
+int			ft_format(char *ss, va_list ap, t_format form)
 {
 	int 	type;
 
 	if ((type = ft_first_conver(ss)))
 	{
 		if (type >= 10 && type < 20)
-			ft_putchar(va_arg(arg, int));
+			ft_putchar(va_arg(ap, int));
 		if (type >= 20 && type < 30)
-			ft_putstr(va_arg(arg, char*));
+			ft_putstr(va_arg(ap, char*));
 		if (type >= 30 && type < 40)
-			ft_putnbr(va_arg(arg, int));
+			ft_putnbr(va_arg(ap, int));
 		if (type >= 40 && type < 50)
 			return (1);
 		if (type == 100)
@@ -108,12 +108,15 @@ int			ft_format(char *ss, va_list arg)
 	return (1);
 }
 
+//parses chars between % and type to get flags, width
+
 int 	ft_get_all(char *ss, va_list ap)
 {
-	int 	flag;
+	t_format	form;
 
-	flag = ft_parse_flag(ss, ft_pos_conver(ss));
-
+	form.flag = ft_parse_flag(ss, ft_pos_conver(ss));
+	ft_format(ss, ap, form);
+	return (/*form.width*/ + 1);
 }
 
 int 	ft_printf(char* str, ...)
