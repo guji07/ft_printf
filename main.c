@@ -3,9 +3,10 @@
 
 int main(void)
 {
-	//printf("printf:");
-	//printf("...\n");
-	//printf("%cijdfngijndfjng 34234432234\n", 50);
-	ft_printf("integer 56: %i\n%c%c%c\n%s", 56, 'x', 'u', 'y', "str");
+	int 	i;
+
+	printf("%p", &i);
+	printf("\n");
+	ft_printf("%p", &i);
 	return 0;
 }

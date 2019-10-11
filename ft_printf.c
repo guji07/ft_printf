@@ -7,6 +7,8 @@ void va_end(va_list ap);
 void va_copy(va_list dest, va_list src);
  */
 
+
+
 int			ft_get_flag(char *s)
 {
 	if (s[1] == 'c')
@@ -15,6 +17,8 @@ int			ft_get_flag(char *s)
 		return (20);
 	if (s[1] == 's')
 		return (30);
+	if (s[1] == 'f')
+		return (40);
 	if (s[1] == '%')
 		return (90);
 	return (0);
@@ -31,9 +35,12 @@ int			ft_format(char *ss, va_list arg)
 		ft_putnbr(va_arg(arg, int));
 	if (flag >= 30 && flag < 40)
 		ft_putstr(va_arg(arg, char*));
+	if (flag >= 40 && flag < 50)
+		return (1);
+	if (flag == 90)
+		write(1,"%",1);
 	return (1);
 }
-
 
 int 	ft_printf(char* str, ...)
 {

@@ -16,7 +16,12 @@ void	ft_putstr(char const *s)
 {
 	int i;
 
-	i = -1;
-	while (s[++i])
-		ft_putchar(s[i]);
+	if (s)
+	{
+		i = -1;
+		while (s[++i])
+			ft_putchar(s[i]);
+	}
+	else
+		ft_putstr("(null)");
 }
