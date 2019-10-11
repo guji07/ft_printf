@@ -3,10 +3,8 @@
 
 int main(void)
 {
-	int 	i;
-
-	printf("%p", &i);
-	printf("\n");
-	ft_printf("%p", &i);
-	return 0;
+	int number    =  5;
+	char *pointer = "little";
+	printf("%5.8f", 10.0);
+	return (0);
 }

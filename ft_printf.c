@@ -7,39 +7,113 @@ void va_end(va_list ap);
 void va_copy(va_list dest, va_list src);
  */
 
-
-
-int			ft_get_flag(char *s)
+int 	ft_parse_flag(char *ss, int num)
 {
-	if (s[1] == 'c')
-		return (10);
-	if (s[1] == 'i' || s[1] == 'd')
-		return (20);
-	if (s[1] == 's')
-		return (30);
-	if (s[1] == 'f')
-		return (40);
-	if (s[1] == '%')
-		return (90);
+	int 	i;
+
+	i = 0;
+	while (ss[++i] && i <= num)
+	{
+		if (ss[i] == '-')
+			return (1);
+		if (ss[i] == '0' && ss[i + 1] != '.')
+			return (2);
+		if (ss[i] == '+')
+			return (3);
+		if (ss[i] == '#')
+			return (4);
+	}
+	return (0);
+}
+
+int 		ft_pos_conver(char *s)
+{
+	int 	i;
+
+	i = 0;
+	while (s[++i])
+	{
+		if (s[i] == 'c')
+			return (i);
+		if (s[i] == 's')
+			return (i);
+		if (s[i] == 'd' || s[i] == 'i')
+			return (i);
+		if (s[i] == 'p')
+			return (i);
+		if (s[i] == 'o')
+			return (i);
+		if (s[i] == 'u')
+			return (i);
+		if (s[i] == 'x')
+			return (i);
+		if (s[i] == 'X')
+			return (i);
+		if (s[i] == 'f')
+			return (i);
+		if (s[i] == '%')
+			return (i);
+	}
+	return (0);
+}
+
+int 		ft_first_conver(char *s)
+{
+	int 	i;
+
+	i = 0;
+	while (s[++i])
+	{
+		if (s[i] == 'c')
+			return (10);
+		if (s[i] == 's')
+			return (20);
+		if (s[i] == 'd' || s[i] == 'i')
+			return (30);
+		if (s[i] == 'p')
+			return (40);
+		if (s[i] == 'o')
+			return (50);
+		if (s[i] == 'u')
+			return (60);
+		if (s[i] == 'x')
+			return (70);
+		if (s[i] == 'X')
+			return (80);
+		if (s[i] == 'f')
+			return (90);
+		if (s[i] == '%')
+			return (100);
+	}
 	return (0);
 }
 
 int			ft_format(char *ss, va_list arg)
 {
+	int 	type;
+
+	if ((type = ft_first_conver(ss)))
+	{
+		if (type >= 10 && type < 20)
+			ft_putchar(va_arg(arg, int));
+		if (type >= 20 && type < 30)
+			ft_putstr(va_arg(arg, char*));
+		if (type >= 30 && type < 40)
+			ft_putnbr(va_arg(arg, int));
+		if (type >= 40 && type < 50)
+			return (1);
+		if (type == 100)
+			write(1, "%", 1);
+	}
+	return (1);
+}
+
+int 	ft_get_all(char *ss, va_list ap)
+{
 	int 	flag;
 
-	flag = ft_get_flag(ss);
-	if (flag >= 10 && flag < 20)
-		ft_putchar(va_arg(arg, int));
-	if (flag >=20 && flag < 30)
-		ft_putnbr(va_arg(arg, int));
-	if (flag >= 30 && flag < 40)
-		ft_putstr(va_arg(arg, char*));
-	if (flag >= 40 && flag < 50)
-		return (1);
-	if (flag == 90)
-		write(1,"%",1);
-	return (1);
+	flag = ft_parse_flag(ss, ft_pos_conver(ss));
+
 }
 
 int 	ft_printf(char* str, ...)
@@ -54,7 +128,7 @@ int 	ft_printf(char* str, ...)
 		if (str[i] != '%')
 			write(1, str + i, 1);
 		else
-			i = i + ft_format(str + i, ap);
+			i = i + ft_get_all(str + i, ap);
 		i++;
 	}
 	return (0);
