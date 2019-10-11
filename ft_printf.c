@@ -38,7 +38,7 @@ int 		ft_pos_conver(char *s)
 	return (0);
 }
 
-int 	ft_parse_flag(char *ss, int num)
+int 	ft_parse_flag(char *ss, int num, t_format *form)
 {
 	int 	i;
 
@@ -46,13 +46,15 @@ int 	ft_parse_flag(char *ss, int num)
 	while (ss[++i] && i <= num)
 	{
 		if (ss[i] == '-')
-			return (1);
-		if (ss[i] == '0' && ss[i + 1] != '.')
-			return (2);
+			(*form).flag = 1;
 		if (ss[i] == '+')
-			return (3);
+			(*form).flag = 2;
+		if (ss[i] == '0' && ss[i + 1] != '.')
+			(*form).flag = 3;
 		if (ss[i] == '#')
-			return (4);
+			(*form).flag = 4;
+		if (ss[i] == '0')
+			(*form).flag = 5;
 	}
 	return (0);
 }
@@ -114,7 +116,8 @@ int 	ft_get_all(char *ss, va_list ap)
 {
 	t_format	form;
 
-	form.flag = ft_parse_flag(ss, ft_pos_conver(ss));
+	form.flag = 0;
+	ft_parse_flag(ss, ft_pos_conver(ss), &form);
 	ft_format(ss, ap, form);
 	return (/*form.width*/ + 1);
 }

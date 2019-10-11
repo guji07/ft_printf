@@ -13,7 +13,7 @@ typedef  struct				s_format
 int			ft_printf(char* format, ...);
 int			ft_format(char *ss, va_list ap, t_format form);
 int 		ft_pos_conver(char *s);
-int			ft_parse_flag(char *ss, int num);
+int			ft_parse_flag(char *ss, int num, t_format *form);
 int			ft_first_conver(char *s);
 int			ft_get_all(char *ss, va_list ap);
 #endif
