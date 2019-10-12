@@ -11,7 +11,7 @@ int				ft_format(char *ss, va_list ap)
 {
 	int 	type;
 
-	if ((type = ft_conver_name(ss)))
+	if ((type = ft_parse_name(ss)))
 	{
 		if (type >= 10 && type < 20)
 			ft_putchar(va_arg(ap, int));
@@ -24,7 +24,7 @@ int				ft_format(char *ss, va_list ap)
 		if (type == 100)
 			write(1, "%", 1);
 	}
-	return (1);
+	return (ft_len_to_type(ss));
 }
 
 int				ft_printf(char* str, ...)

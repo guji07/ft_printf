@@ -8,13 +8,20 @@
 
 typedef  struct				s_format
 {
-	int		flag[5];
+	int			*flag;
+	int 		width;
+	int 		precision;
 }							t_format;
 
 int			ft_printf(char* format, ...);
-int 		ft_conver_name(char *s);
-int 		ft_conver_pos(char *s);
-t_format	ft_parse_flag(int num, char *ss);
+int 		ft_parse_name(char *s);
+int 		ft_len_to_type(char *s);
+
+int			*ft_parse_flag(int num, char *ss);
+int 		ft_parse_width(char *ss);
+int 		ft_parse_precision(char *ss);
+
+int			ft_intlen(signed long long int num);
 void		ft_flagint(int num, char *ss);
 
 #endif

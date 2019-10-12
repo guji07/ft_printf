@@ -1,31 +1,59 @@
 #include "ft_printf.h"
 
-t_format		ft_parse_flag(int num, char *ss)
+int 		ft_parse_precision(char *ss)
+{
+	int 	i;
+	int 	len;
+	i = 0;
+	len = ft_len_to_type(ss);
+	while (ss[i] && ss[i] != '.' && i < len)
+		i++;
+	if (ss[i] == '.')
+		return (ft_atoi(ss + i + 1));
+	return (0);
+}
+
+int 			ft_parse_width(char *ss)
+{
+	int 	i;
+
+	i = 1;
+	while ((ss[i] == '0' || ss[i] == '+' || ss[i] == ' ' || ss[i] == '-' || ss[i] == '#') && ss[i])
+	{
+		i++;
+	}
+	if (ss[i] && (ss[i] >= '0' && ss[i] <= '9'))
+		return (ft_atoi(ss + i));
+	return (0);
+}
+
+int				*ft_parse_flag(int num, char *ss)
 {
 	int			i;
-	int			j;
-	t_format	form;
+	int			*flag;
 
-	j = 0;
+	flag = ft_memalloc(5 * sizeof(int));
 	i = 0;
-	while (j < 5)
-		form.flag[++j] = 0;
-	j = 0;
+	while (i < 5)
+		flag[++i] = 0;
+	i = 0;
 	while (ss[++i] && i <= num)
 	{
 		if (ss[i] == '-')
-			((form).flag)[j++] = 1;
+			flag[0] = 1;
 		if (ss[i] == '+')
-			((form).flag)[j++] = 2;
+			flag[1] = 1;
 		if (ss[i] == '0' && ss[i + 1] != '.')
-			((form).flag)[j++] = 3;
+			flag[2] = 1;
 		if (ss[i] == '#')
-			((form).flag)[j++] = 4;
+			flag[3] = 1;
+		if (ss[i] == ' ')
+			flag[4] = 1;
 	}
-	return (form);
+	return (flag);
 }
 
-int 		ft_conver_pos(char *s)
+int 		ft_len_to_type(char *s)
 {
 	int 	i;
 
@@ -56,7 +84,7 @@ int 		ft_conver_pos(char *s)
 	return (0);
 }
 
-int 		ft_conver_name(char *s)
+int 		ft_parse_name(char *s)
 {
 	int 	i;
 
