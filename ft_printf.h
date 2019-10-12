@@ -4,16 +4,17 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <limits.h>
+#include "libft/libft.h"
 
 typedef  struct				s_format
 {
-	int		flag;
+	int		flag[5];
 }							t_format;
 
 int			ft_printf(char* format, ...);
-int			ft_format(char *ss, va_list ap, t_format form);
-int 		ft_pos_conver(char *s);
-int			ft_parse_flag(char *ss, int num, t_format *form);
-int			ft_first_conver(char *s);
-int			ft_get_all(char *ss, va_list ap);
+int 		ft_conver_name(char *s);
+int 		ft_conver_pos(char *s);
+t_format	ft_parse_flag(int num, char *ss);
+void		ft_flagint(int num, char *ss);
+
 #endif

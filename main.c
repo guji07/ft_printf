@@ -5,6 +5,6 @@ int main(void)
 {
 	int number    =  5;
 	char *pointer = "little";
-	ft_printf("[%s]  ss123   \n\n\n[%c] ", "10.0", '9');
+	ft_printf("[%i %s]", -1238, "123");
 	return (0);
 }
