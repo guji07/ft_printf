@@ -1,35 +1,26 @@
 #include "ft_printf.h"
 
-int		ft_int_withoutminus(int num, t_format form)
+int 	ft_writeint(int num, t_format form, char *ss)
 {
 	int 	i;
-
-	i = 0;
-	if (form.flag[1] && num >= 0)
-	{
-		while (i++ < form.width - form.precision - ft_intlen(num))
-			write(1, " ", 1);
-		write(1, "+", 1);
+	if (num == 0 && !ft_parse_precision(ss))
+		return (0);
+	i = 1;
+	if (num >= 0 && form.flag[1] == 0)
 		i = 0;
-		while (i < form.precision - ft_intlen(num))
-		{
-			write(1, "0", 1);
-			i++;
-		}
-		ft_putnbr(num);
-	}
-	if (form.flag[1] && num < 0)
+	while (i < form.width - form.precision)
 	{
-		while (i++ < form.width - form.precision - ft_intlen(num))
-			write(1, " ", 1);
-		i = 0;
-		while (i < form.precision - ft_intlen(num))
-		{
-			write(1, "0", 1);
-			i++;
-		}
-		ft_putnbr(num);
+		write(1, " ", 1);
+		i++;
 	}
+	if (form.flag[1] == 1 || num < 0)
+	{
+		write(1, num < 0 ? "-" : "+", 1);
+		form.precision++;
+	}
+	while (i++ < (form.width > form.precision ? form.width : form.precision) - ft_intlen(num))
+		write(1, "0", 1);
+	ft_putnbr(num);
 	return (0);
 }
 
@@ -41,10 +32,9 @@ int			ft_intlen(signed long long int num)
 	i = 19;
 	base = 1000000000000000000;
 	if (num < 0)
-	{
 		num = -num;
-		i = 20;
-	}
+	if (num == 0)
+		return (1);
 	while (42)
 	{
 		if (num / base)
@@ -64,7 +54,7 @@ void		ft_flagint(int num, char *ss)
 		form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss) > ft_intlen(num) ? ft_parse_precision(ss) : ft_intlen(num);
 	if (!form.flag[0])
-		ft_int_withoutminus(num, form);
+		ft_writeint(num, form, ss);
 	else
 		return ;
 }

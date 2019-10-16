@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "../ft_printf.h"
 
 static		int		ft_whtnbr(int num)
 {
@@ -47,13 +48,12 @@ static		void	ft_screen(int nb)
 	}
 }
 
-void				ft_putnbr(int nb)
+void			ft_putnbr(int nb)
 {
 	if ((ft_whtnbr(nb)) == 0)
 		ft_screen(nb);
 	else if ((ft_whtnbr(nb)) == 1)
 	{
-		ft_putchar('-');
 		nb = nb * (-1);
 		ft_screen(nb);
 	}
