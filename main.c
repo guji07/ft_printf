@@ -6,9 +6,9 @@ int main(void)
 	int number    =  5;
 	char *pointer = "little";
 
-	printf("[%++++5.i]\n", -142335342);
-	ft_printf("[%++++5.i]\n", -142335342);
-	printf("[%i]\n", -2222);
+	printf("[%+5.i]\n", NULL);
+	ft_printf("[%+5.i]\n", NULL);
+	printf("[%15.11i]\n", -2222);
 	ft_printf("[%15.11i]\n", -2222);
 	printf("[%0.11i]\n", -3333);
 	ft_printf("[%0.11i]\n", -3333);
