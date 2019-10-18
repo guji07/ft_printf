@@ -58,7 +58,6 @@ void			ft_putnbrpos(int nb)
 	}
 	else if ((ft_whtnbr(nb)) == 2)
 	{
-		ft_putchar('-');
 		nb = nb / 10;
 		ft_screen(-nb);
 		ft_putchar('8');

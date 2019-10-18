@@ -11,4 +11,4 @@ add_executable(printf
         ${LIBPATH}/ft_write ${LIBPATH}/flag_int ${LIBPATH}/ft_putchar ${LIBPATH}/ft_putstr
         ${LIBPATH}/ft_printf ${LIBPATH}/parsers ${LIBPATH}/ft_atoi ${LIBPATH}/ft_memalloc
         ${LIBPATH}/ft_bzero main libft/ft_flagstr.c
-        ${LIBPATH}/ft_strlen libft/ft_putnstr.c libft/ft_flagpercent.c)
+        ${LIBPATH}/ft_strlen libft/ft_putnstr.c libft/ft_flagpercent.c libft/ft_flagchar.c)

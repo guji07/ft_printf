@@ -30,7 +30,7 @@ int main(void)
 	ft_printf("[%+0.1i]\n", -7777);
 	printf("[%10s is a string]\n", "this");
 	ft_printf("[%10s is a string]", "this");*/
-	printf("@moulitest: %s\n", NULL);
-	ft_printf("@moulitest: %s", NULL);
+	printf("%-10.5d\n", 4242);
+	ft_printf("%-10.5d\n", 4242);
 	return (0);
 }

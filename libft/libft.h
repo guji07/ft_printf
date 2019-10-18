@@ -100,21 +100,24 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 void				ft_lstiter(t_list *lst, void (*f)(t_list
-			*elem));
+*elem));
 
 int					ft_printf(char* format, ...);
-int 				ft_parse_name(char *s);
-int 				ft_len_to_type(char *s);
 
+int 				ft_len_to_type(char *s);
+int 				ft_parse_name(char *s);
 int					*ft_parse_flag(int num, char *ss);
 int 				ft_parse_width(char *ss);
 int 				ft_parse_precision(char *ss);
 
-int					ft_intlen(signed long long int num);
 void				ft_flagint(int num, char *ss);
-int 				ft_writeint(int num, t_format form, char *ss);
+int					ft_intlen(signed long long int num);
+int 				ft_writeintplus(int num, t_format form, char *ss);
+int 				ft_writeint0(int num, t_format form, char *ss);
+int 				ft_writeintmin(int num, t_format form, char *ss);
+int 				ft_writeintmin0(int num, t_format form, char *ss);
 
 void 				ft_flagstr(char *str, char *ss);
-
 void 				ft_flagpercent(char *ss);
+void				ft_flagchar(char *ss, int c);
 #endif

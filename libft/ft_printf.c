@@ -8,7 +8,7 @@ int				ft_format(char *ss, va_list ap)
 	if ((type = ft_parse_name(ss)))
 	{
 		if (type >= 10 && type < 20)
-			ft_putchar(va_arg(ap, int));
+			ft_flagchar(ss, va_arg(ap, int));
 		if (type >= 20 && type < 30)
 			ft_flagstr(va_arg(ap, char*), ss);
 		if (type >= 30 && type < 40)
