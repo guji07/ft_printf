@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbrpos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../ft_printf.h"
 
 static		int		ft_whtnbr(int num)
 {
@@ -48,7 +47,7 @@ static		void	ft_screen(int nb)
 	}
 }
 
-void			ft_putnbr(int nb)
+void			ft_putnbrpos(int nb)
 {
 	if ((ft_whtnbr(nb)) == 0)
 		ft_screen(nb);

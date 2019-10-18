@@ -12,29 +12,6 @@
 
 #include "libft.h"
 
-static		int	ft_intlen(int n)
-{
-	int		i;
-
-	if (n >= 0)
-	{
-		i = 1;
-		while ((n /= 10) > 0)
-			i++;
-		return (i);
-	}
-	else if (n == 0)
-		return (1);
-	else
-	{
-		n = n * (-1);
-		i = 2;
-		while ((n /= 10) > 0)
-			i++;
-		return (i);
-	}
-}
-
 static	void	ft_positive(char *str, int n)
 {
 	int	i;

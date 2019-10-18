@@ -20,7 +20,7 @@ void	ft_putstr(char const *s)
 	{
 		i = -1;
 		while (s[++i])
-			ft_putchar(s[i]);
+			ft_write(s[i]);
 	}
 	else
 		ft_putstr("(null)");

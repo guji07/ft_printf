@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+#include "libft.h"
 
 int 		ft_parse_precision(char *ss)
 {
@@ -10,7 +10,7 @@ int 		ft_parse_precision(char *ss)
 		i++;
 	if (ss[i] == '.')
 		return (ft_atoi(ss + i + 1));
-	return (0);
+	return (-1);
 }
 
 int 			ft_parse_width(char *ss)

@@ -1,28 +1,4 @@
-#include "ft_printf.h"
-
-int 	ft_writeint(int num, t_format form, char *ss)
-{
-	int 	i;
-	if (num == 0 && !ft_parse_precision(ss))
-		return (0);
-	i = 1;
-	if (num >= 0 && form.flag[1] == 0)
-		i = 0;
-	while (i < form.width - form.precision)
-	{
-		write(1, " ", 1);
-		i++;
-	}
-	if (form.flag[1] == 1 || num < 0)
-	{
-		write(1, num < 0 ? "-" : "+", 1);
-		form.precision++;
-	}
-	while (i++ < (form.width > form.precision ? form.width : form.precision) - ft_intlen(num))
-		write(1, "0", 1);
-	ft_putnbr(num);
-	return (0);
-}
+#include "libft.h"
 
 int			ft_intlen(signed long long int num)
 {
@@ -42,6 +18,33 @@ int			ft_intlen(signed long long int num)
 		base /= 10;
 		i--;
 	}
+}
+
+int 	ft_writeint(int num, t_format form, char *ss)
+{
+	int 	i;
+
+	i = 1;
+	if (num >= 0 && form.flag[1] == 0)
+		i = 0;
+	while (i < form.width - form.precision)
+	{
+		ft_write(' ');
+		i++;
+	}
+	if ((num == 0 && !ft_parse_precision(ss)))
+		if (i < form.width - form.precision + 1)
+			ft_write('0');
+	if (form.flag[1] == 1 || num < 0)
+	{
+		ft_write(num < 0 ?'-' : '+');
+		form.precision++;
+	}
+	while (i++ < (form.width > form.precision ? form.width : form.precision) - ft_intlen(num))
+		ft_write('0');
+	if (!(num == 0 && !ft_parse_precision(ss)))
+		ft_putnbrpos(num);
+	return (0);
 }
 
 void		ft_flagint(int num, char *ss)

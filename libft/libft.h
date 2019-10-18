@@ -15,6 +15,10 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <limits.h>
 
 typedef	struct		s_list
 {
@@ -22,6 +26,16 @@ typedef	struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef  struct				s_format
+{
+	int			*flag;
+	int 		width;
+	int 		precision;
+}							t_format;
+
+int kolvo;
+
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
@@ -69,15 +83,17 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
+void				ft_putnbrpos(int nb);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
-void				ft_putnbr(int nb);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-
+void 				ft_write(int c);
+void 				ft_putnstr(char *str, size_t n);
+int					ft_module(int a);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -85,4 +101,20 @@ void				ft_lstadd(t_list **alst, t_list *new);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 void				ft_lstiter(t_list *lst, void (*f)(t_list
 			*elem));
+
+int					ft_printf(char* format, ...);
+int 				ft_parse_name(char *s);
+int 				ft_len_to_type(char *s);
+
+int					*ft_parse_flag(int num, char *ss);
+int 				ft_parse_width(char *ss);
+int 				ft_parse_precision(char *ss);
+
+int					ft_intlen(signed long long int num);
+void				ft_flagint(int num, char *ss);
+int 				ft_writeint(int num, t_format form, char *ss);
+
+void 				ft_flagstr(char *str, char *ss);
+
+void 				ft_flagpercent(char *ss);
 #endif
