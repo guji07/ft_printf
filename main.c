@@ -2,8 +2,8 @@
 
 int main(void)
 {
-	/*printf("[%15.11i]\n", -2222123);
-	ft_printf("[%15.11i]\n", -2222123);
+	printf("[%i]\n", -2222123);
+	ft_printf("[%i]\n", -2222123);
 	printf("[%1.11i]\n", -3333);
 	ft_printf("[%1.11i]\n", -3333);
 	printf("[%0.7i]\n", -3333);
@@ -31,9 +31,9 @@ int main(void)
 	printf("[%-8.15i]\n", -123);
 	ft_printf("[%-8.15i]\n", -123);
 	printf("[%1.11i]\n", 0);
-	ft_printf("[%1.11i]\n", 0);*/
-	long long int i = 123123123123123;
-	printf("[%lli]", i);
-	ft_printf("[%lli]\n", i);
+	ft_printf("[%1.11i]\n", 0);
+	long int i = -500000;
+	printf("[%li]\n", i);
+	ft_printf("[%li]\n", i);
 	return (0);
 }

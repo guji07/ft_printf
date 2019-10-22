@@ -84,15 +84,7 @@ void		ft_intright(long long num, t_format form)
 void		ft_flagint(long long num, char *ss)
 {
 	t_format		form;
-	int 			size;
 
-	size = ft_parse_size(ss);
-	if (size == 1)
-		num = (long long)((short)num);
-	if (size == 2)
-		num = (long long)((unsigned short)num);
-	if (size == 3)
-		num = (long long)((long)num);
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
