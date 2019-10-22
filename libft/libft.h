@@ -19,7 +19,11 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
-
+#define MINUS form.flag[0]
+#define PLUS form.flag[1]
+#define ZERO form.flag[2]
+#define HASHTAG form.flag[3]
+#define SPACE form.flag[4]
 typedef	struct		s_list
 {
 	void			*content;

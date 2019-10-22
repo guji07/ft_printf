@@ -2,14 +2,6 @@
 
 int main(void)
 {
-	/*int		number    =  5;
-	char	*pointer = "little";
-	int		i;
-
-	i = printf("[%%]");
-	printf(" printf:    [%i]\n", i);
-	i = ft_printf("[%%]");
-	printf(" ft_printf: [%i]\n", i);
 	printf("[%15.11i]\n", -2222);
 	ft_printf("[%15.11i]\n", -2222);
 	printf("[%0.11i]\n", -3333);
@@ -29,8 +21,8 @@ int main(void)
 	printf("[%+0.1i]\n", -7777);
 	ft_printf("[%+0.1i]\n", -7777);
 	printf("[%10s is a string]\n", "this");
-	ft_printf("[%10s is a string]", "this");*/
-	printf("%-10.5d\n", 4242);
-	ft_printf("%-10.5d\n", 4242);
+	ft_printf("[%10s is a string]\n", "this");
+	printf("[%012.5i]\n", 456);
+	ft_printf("[%012.5i]\n", 456);
 	return (0);
 }
