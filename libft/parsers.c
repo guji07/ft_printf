@@ -1,9 +1,38 @@
 #include "libft.h"
 
+int 		ft_parse_size(char *ss)
+{
+	int 	i;
+	int 	len;
+
+	i = 0;
+	len = ft_len_to_type(ss);
+	while (ss[i] && i < len)
+	{
+		if (ss[i] == 'h')
+		{
+			if (ss[i + 1] == 'h')
+				return (2);
+			else
+				return (1);
+		}
+		if (ss[i] == 'l')
+		{
+			if (ss[i + 1] == 'l')
+				return (4);
+			else
+				return (3);
+		}
+		i++;
+	}
+	return (0);
+}
+
 int 		ft_parse_precision(char *ss)
 {
 	int 	i;
 	int 	len;
+
 	i = 0;
 	len = ft_len_to_type(ss);
 	while (ss[i] && ss[i] != '.' && i < len)
@@ -43,7 +72,7 @@ int				*ft_parse_flag(int num, char *ss)
 			flag[0] = 1;
 		if (ss[i] == '+')
 			flag[1] = 1;
-		if (ss[i] == '0' && ss[i + 1] != '.')
+		if (ss[i] == '0' && ft_strchr("+- #%", ss[i - 1]))
 			flag[2] = 1;
 		if (ss[i] == '#')
 			flag[3] = 1;

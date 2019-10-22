@@ -16,9 +16,7 @@ int					ft_atoi(const char *str)
 {
 	int						z;
 	signed long long int	sum;
-	int						n;
 
-	n = 1;
 	z = 1;
 	sum = 0;
 	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f' ||

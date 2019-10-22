@@ -12,24 +12,22 @@
 
 #include "libft.h"
 
-static		int		ft_whtnbr(int num)
+static	long long	ft_whtnbr(long long num)
 {
 	int i;
 
 	i = 0;
 	if (num > 0)
 		i = 0;
-	if ((num < 0) && (num > (-2147483648)))
+	if ((num < 0))
 		i = 1;
-	if (num == -2147483648)
-		i = 2;
 	return (i);
 }
 
-static		void	ft_screen(int nb)
+static		void	ft_screen(long long nb)
 {
-	int div;
-	int n;
+	long long div;
+	long long n;
 
 	n = 1;
 	div = 1;
@@ -40,14 +38,14 @@ static		void	ft_screen(int nb)
 	}
 	while (n > 0)
 	{
-		ft_putchar('0' + (nb / div));
+		ft_putchar('0' + (int)(nb / div));
 		nb = nb % div;
 		div = div / 10;
 		n--;
 	}
 }
 
-void			ft_putnbrpos(int nb)
+void			ft_putnbrpos(long long nb)
 {
 	if ((ft_whtnbr(nb)) == 0)
 		ft_screen(nb);

@@ -1,6 +1,5 @@
 SRCS =   main.c
 
-FLAGS =
 NAME = test
 all: $(NAME)
 $(NAME):$(OBJECTS)

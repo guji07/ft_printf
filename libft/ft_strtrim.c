@@ -26,11 +26,9 @@ char			*ft_strtrim(char const *s)
 	int		i;
 	int		n;
 	char	*str;
-	int		j;
 
 	if (s)
 	{
-		j = 0;
 		i = 0;
 		n = ft_strlen(s);
 		while (s[i] && (s[i] == '\t' || s[i] == ' ' || s[i] == '\n'))

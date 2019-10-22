@@ -24,6 +24,7 @@
 #define ZERO form.flag[2]
 #define HASHTAG form.flag[3]
 #define SPACE form.flag[4]
+
 typedef	struct		s_list
 {
 	void			*content;
@@ -87,7 +88,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
-void				ft_putnbrpos(int nb);
+void				ft_putnbrpos(long long int nb);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -113,13 +114,11 @@ int 				ft_parse_name(char *s);
 int					*ft_parse_flag(int num, char *ss);
 int 				ft_parse_width(char *ss);
 int 				ft_parse_precision(char *ss);
-
-void				ft_flagint(int num, char *ss);
-int					ft_intlen(signed long long int num);
-int 				ft_writeintplus(int num, t_format form, char *ss);
-int 				ft_writeint0(int num, t_format form, char *ss);
-int 				ft_writeintmin(int num, t_format form, char *ss);
-int 				ft_writeintmin0(int num, t_format form, char *ss);
+int 				ft_parse_size(char *ss);
+void				ft_flagint(long long num, char *ss);
+int					ft_intlen(long long int num);
+void				ft_intleft(long long num, t_format form);
+void				ft_intright(long long num, t_format form);
 
 void 				ft_flagstr(char *str, char *ss);
 void 				ft_flagpercent(char *ss);

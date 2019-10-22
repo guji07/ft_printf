@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int			ft_intlen(signed long long int num)
+int			ft_intlen(long long int num)
 {
 	int						i;
 	signed long long int	base;
@@ -19,13 +19,15 @@ int			ft_intlen(signed long long int num)
 		i--;
 	}
 }
+
 int 		ft_max(int a, int b)
 {
 	if (a > b)
 		return (a);
 	return (b);
 }
-void		ft_intright(int num, char *ss, t_format form)
+
+void		ft_intleft(long long num, t_format form)
 {
 	int 	width;
 	int 	max;
@@ -33,31 +35,69 @@ void		ft_intright(int num, char *ss, t_format form)
 	max = ft_max(form.precision, ft_intlen(num));
 	width = 0;
 	if (form.width < max)
-	{
 		form.width = max;
-	}
-	while (width < form.width - max - ft_max(PLUS, num <= 0))
-	{
+	if (SPACE && !PLUS)
 		ft_write(' ');
-		width++;
-	}
 	if (PLUS || num <= 0)
 	{
 		ft_write(num >= 0  ? '+' : '-');
 		width++;
 	}
-	while ((width++ < form.width - ft_intlen(num)) && (form.precision > ft_intlen(num)))
+	while (width++ < form.precision - ft_intlen(num) + (PLUS || (num < 0)))
+		ft_write('0');
+	ft_putnbrpos(num);
+	while ((width < form.width - ft_intlen(num) + !SPACE))
+	{
+		ft_write(' ');
+		width++;
+	}
+}
+
+void		ft_intright(long long num, t_format form)
+{
+	int 	width;
+	int 	max;
+
+	max = ft_max(form.precision, ft_intlen(num));
+	width = 0;
+	if (form.width < max)
+		form.width = max;
+	if (SPACE && !PLUS)
+		ft_write(' ');
+	while ((width < form.width - max - ft_max(PLUS, num <= 0)) && !ZERO)
+	{
+		ft_write(' ');
+		width++;
+	}
+	if (PLUS || num < 0)
+	{
+		ft_write(num >= 0  ? '+' : '-');
+		width++;
+	}
+	if (form.precision >= form.width && (PLUS || (num < 0)))
+		width--;
+	while ((width++ < form.width - ft_intlen(num)) && (form.precision > ft_intlen(num) || (ZERO && form.precision == -1)))
 		ft_write('0');
 	ft_putnbrpos(num);
 }
 
-void		ft_flagint(int num, char *ss)
+void		ft_flagint(long long num, char *ss)
 {
 	t_format		form;
+	int 			size;
 
+	size = ft_parse_size(ss);
+	if (size == 1)
+		num = (long long)((short)num);
+	if (size == 2)
+		num = (long long)((unsigned short)num);
+	if (size == 3)
+		num = (long long)((long)num);
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
 	if (!MINUS)
-		ft_intright(num, ss, form);
+		ft_intright(num, form);
+	else
+		ft_intleft(num, form);
 }
