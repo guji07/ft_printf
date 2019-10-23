@@ -6,18 +6,24 @@ int				ft_format(char *ss, va_list ap)
 
 	if ((type = ft_parse_name(ss)))
 	{
-		if (type >= 10 && type < 20)
+		if (type == 10)
 			ft_flagchar(ss, va_arg(ap, int));
-		if (type >= 20 && type < 30)
+		if (type == 20)
 			ft_flagstr(va_arg(ap, char*), ss);
-		if (type >= 30 && type < 40)
+		if (type == 30)
 			ft_int(ss, ap);
-		if (type >= 40 && type < 50)
+		if (type == 40)
 			ft_unsignedint(ss, ap);
-		if (type >= 50 && type < 60)
-			ft_octet(ss, ap, 8);
-		if (type >= 70 && type < 80)
-			ft_octet(ss, ap, 16);
+		if (type == 50)
+			ft_octet(ss, ap);
+		if (type == 60)
+			ft_xtet(ss, ap, 1);
+		if (type == 70)
+			ft_xtet(ss, ap, 1);
+		if (type == 80)
+			ft_xtet(ss, ap, 2);
+		if (type == 90)
+			return (0);
 		if (type == 100)
 			ft_flagpercent(ss);
 	}

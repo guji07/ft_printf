@@ -62,5 +62,20 @@ int main(void)
 	ft_printf("[%x]\n", -42);
 	printf("[%x]\n", 42);
 	ft_printf("[%x]\n", 42);*/
+	/*printf("[%o]\n", 123);
+	ft_printf("[%o]\n", 123);
+	printf("[%lo]\n", 123l);
+	ft_printf("[%lo]\n", 123l);
+	printf("[%o]\n", -123);
+	//ft_printf("[%lo]\n", -123l);
+	//printf("[%3.2o]\n", 123);
+	//ft_printf("[%3.2o]\n", 123);
+	//printf("[%-5.10lo]\n", 123l);
+	//ft_printf("[%-5.10lo]\n", 123l);*/
+	printf("[%x]\n", 53125);
+	ft_printf("[%x]\n", 53125);
+	int i = 123132;
+	printf("%20p\n", &i);
+	ft_printf("%20p", &i);
 	return (0);
 }

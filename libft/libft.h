@@ -129,7 +129,7 @@ void 				ft_memswap(char *s1,char *s2);
 int 				ft_max(int a, int b);
 char				*ft_itoabase(long long num, char* str, int base);
 void 				reverse(char str[], int length);
-
+void				ft_putupstr(char *s);
 /*
  * printf function
  */
@@ -166,7 +166,7 @@ void 				ft_flagpercent(char *ss);
 void				ft_flagchar(char *ss, int c);
 
 /*
- * unsigned int handlers
+ * unsigned int handlers(u)
  */
 
 void				ft_unsignedint(char *ss, va_list ap);
@@ -176,10 +176,15 @@ void				ft_unsignedintleft(unsigned long long num, t_format form);
 int					ft_unsignedintlen(unsigned long long int num);
 
 /*
- * octet handlers
+ * octet handlers(O)
  */
 
-void				ft_octet(char *ss, va_list ap, int base);
-void				ft_flagoctet(long long num, char *ss, int base);
-
+void				ft_octet(char *ss, va_list ap);
+void				ft_flagoctet(long long num, char *ss);
+void				ft_octetright(char *str, t_format form);
+void				ft_octetleft(char *str, t_format form);
+/*
+ * base 16 ints handlers(xX)
+ */
+void				ft_xtet(char *ss, va_list ap, int mode);
 #endif

@@ -21,7 +21,7 @@ void	ft_swap(int *a, int *b)
 
 void 	ft_memswap(char *s1,char *s2)
 {
-	char s[0];
+	char s[1];
 
 	s[0] = *s1;
 	*s1 = *s2;

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void				ft_octetleft(char *str, t_format form)
+void				ft_xtetleft(char *str, t_format form, int mode)
 {
 	int 	width;
 	int 	max;
@@ -15,7 +15,10 @@ void				ft_octetleft(char *str, t_format form)
 		ft_write('0');
 	if (HASHTAG)
 		ft_write('0');
-	ft_putstr(str);
+	if (mode == 2)
+		ft_putupstr(str);
+	else
+		ft_putstr(str);
 	while ((width < form.width - (int)ft_strlen(str) + !SPACE))
 	{
 		ft_write(' ');
@@ -23,7 +26,7 @@ void				ft_octetleft(char *str, t_format form)
 	}
 }
 
-void				ft_octetright(char *str, t_format form)
+void				ft_xtetright(char *str, t_format form, int mode)
 {
 	int 	width;
 	int 	max;
@@ -50,10 +53,15 @@ void				ft_octetright(char *str, t_format form)
 	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
 		ft_write('0');
 	if (form.precision || str[0] != '0')
-		ft_putstr(str);
+	{
+		if (mode == 2)
+			ft_putupstr(str);
+		else
+			ft_putstr(str);
+	}
 }
 
-void				ft_flagoctet(long long num, char *ss)
+void		ft_flagxtet(unsigned long long num, char *ss, int mode)
 {
 	t_format	form;
 	char		*str;
@@ -62,44 +70,44 @@ void				ft_flagoctet(long long num, char *ss)
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
-	ft_itoabase(num, str, 8);
+	ft_itoabase(num, str, 16);
 	if (!MINUS)
-		ft_octetright(str, form);
+		ft_xtetright(str, form, mode);
 	else
-		ft_octetleft(str, form);
+		ft_xtetleft(str, form, mode);
 	free(str);
 	free(form.flag);
 }
 
-void				ft_octet(char *ss, va_list ap)
+void		ft_xtet(char *ss, va_list ap, int mode)
 {
 	int				size;
-	long long int 	num;
+	unsigned long long int 	num;
 
 	size = ft_parse_size(ss);
 	if (size == h)
 	{
 		num = va_arg(ap, int);
-		ft_flagoctet((short int)num, ss);
+		ft_flagxtet((unsigned short int)num, ss, mode);
 	}
 	if (size == hh)
 	{
 		num = va_arg(ap, int);
-		ft_flagoctet((signed char)num, ss);
+		ft_flagxtet((unsigned char)num, ss, mode);
 	}
 	if (size == l)
 	{
 		num = va_arg(ap, long int);
-		ft_flagoctet((long int)num, ss);
+		ft_flagxtet((unsigned long int)num, ss, mode);
 	}
 	if (size == ll)
 	{
-		num = va_arg(ap, long long int);
-		ft_flagoctet(num, ss);
+		num = va_arg(ap, unsigned long long int);
+		ft_flagxtet(num, ss, mode);
 	}
 	if (size == 0)
 	{
 		num = va_arg(ap, int);
-		ft_flagoctet((int)num, ss);
+		ft_flagxtet((int)num, ss, mode);
 	}
 }
