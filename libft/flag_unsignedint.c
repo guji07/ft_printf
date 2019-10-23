@@ -74,4 +74,5 @@ void		ft_flagunsignedint(unsigned long long num, char *ss)
 		ft_unsignedintright(num, form);
 	else
 		ft_unsignedintleft(num, form);
+	free(form.flag);
 }

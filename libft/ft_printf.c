@@ -66,6 +66,39 @@ void			ft_int(char *ss, va_list ap)
 	}
 }
 
+void			ft_flago(char *ss, va_list ap)
+{
+	int				size;
+	long long int 	num;
+
+	size = ft_parse_size(ss);
+	if (size == h)
+	{
+		num = va_arg(ap, int);
+		ft_printoctet((short int)num, ss);
+	}
+	if (size == hh)
+	{
+		num = va_arg(ap, int);
+		ft_printoctet((signed char)num, ss);
+	}
+	if (size == l)
+	{
+		num = va_arg(ap, long int);
+		ft_printoctet((long int)num, ss);
+	}
+	if (size == ll)
+	{
+		num = va_arg(ap, long long int);
+		ft_printoctet(num, ss);
+	}
+	if (size == 0)
+	{
+		num = va_arg(ap, int);
+		ft_printoctet((int)num, ss);
+	}
+}
+
 int				ft_format(char *ss, va_list ap)
 {
 	int 	type;
@@ -80,6 +113,8 @@ int				ft_format(char *ss, va_list ap)
 			ft_int(ss, ap);
 		if (type >= 40 && type < 50)
 			ft_unsignedint(ss, ap);
+		if (type >= 50 && type < 60)
+			ft_flago(ss, ap);
 		if (type == 100)
 			ft_flagpercent(ss);
 	}

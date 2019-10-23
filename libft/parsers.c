@@ -40,7 +40,7 @@ int 		ft_parse_precision(char *ss)
 	return (-1);
 }
 
-int 			ft_parse_width(char *ss)
+int 		ft_parse_width(char *ss)
 {
 	int 	i;
 
@@ -54,7 +54,7 @@ int 			ft_parse_width(char *ss)
 	return (0);
 }
 
-int				*ft_parse_flag(int num, char *ss)
+int			*ft_parse_flag(int num, char *ss)
 {
 	int			i;
 	int			*flag;

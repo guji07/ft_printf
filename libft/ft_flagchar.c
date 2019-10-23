@@ -17,4 +17,5 @@ void		ft_flagchar(char *ss, int c)
 	}
 	if (form.flag[0] == 0)
 		ft_write(c);
+	free(form.flag);
 }

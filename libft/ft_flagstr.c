@@ -27,6 +27,7 @@ void 	ft_flagstr(char *str, char *ss)
 					ft_write(' ');
 			ft_putnstr(str, form.precision);
 		}
+		free(form.flag);
 	}
 	else
 		ft_putstr("(null)");

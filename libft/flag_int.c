@@ -100,4 +100,5 @@ void		ft_flagint(long long num, char *ss)
 		ft_intright(num, form);
 	else
 		ft_intleft(num, form);
+	free(form.flag);
 }

@@ -78,6 +78,8 @@ int					ft_tolower(int ch);
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
+void				ft_swap(int *a, int *b);
+void 				ft_memswap(char *s1,char *s2);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
@@ -91,6 +93,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
+char				*ft_itoabase(long long num, char* str, int base);
 char				**ft_strsplit(char const *s, char c);
 void				ft_putnbrpos(long long int nb);
 void				ft_putunsignednbrpos(unsigned long long nb);
@@ -136,5 +139,8 @@ void				ft_unsignedintright(unsigned long long num, t_format form);
 void				ft_unsignedintleft(unsigned long long num, t_format form);
 int					ft_unsignedintlen(unsigned long long int num);
 int 				ft_max(int a, int b);
+
+void				flag_o(long long num, char *ss);
+void				ft_printoctet(long long num, char *ss);
 
 #endif

@@ -14,4 +14,5 @@ void  	ft_flagpercent(char *ss)
 		ft_write(' ');
 	if (form.flag[0] == 0)
 		ft_write('%');
+	free(form.flag);
 }

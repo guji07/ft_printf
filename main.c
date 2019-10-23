@@ -24,8 +24,6 @@ int main(void)
 	ft_printf("[%0.3ss is a string]\n", "this");
 	printf("[%- 12.5i]\n", 456);
 	ft_printf("[%- 12.5i]\n", 456);
-	printf("[% 1.4i]\n", 456);
-	ft_printf("[% 1.4i]\n", 456);
 	printf("[%-8.5i]\n", -123);
 	ft_printf("[%-8.5i]\n", -123);
 	printf("[%-8.15i]\n", -123);
@@ -50,13 +48,15 @@ int main(void)
 	printf("[@moulitest: %.d %.0d]\n", 0, 0);
 	ft_printf("[@moulitest: %.d %.0d]\n", 0, 0);
 	printf("[@moulitest: %5.d %5.0d]\n", 0, 0);
-	ft_printf("[@moulitest: %5.d %5.0d]\n", 0, 0);*/
+	ft_printf("[@moulitest: %5.d %5.0d]\n", 0, 0);
 	//unsigned ints:
-	/*printf("[% u]\n", 4294967295u);
+	printf("[% u]\n", 4294967295u);
 	ft_printf("[% u]\n", 4294967295);
 	printf("[%-15u]\n", 4294967295u);
-	ft_printf("[%-15u]\n", 4294967295);*/
-	printf("[%+u]\n", 4294967295u);
-	ft_printf("[%+u]\n", 4294967295u);
+	ft_printf("[%-15u]\n", 4294967295);
+	printf("[%u]\n", 4294967295u);
+	ft_printf("[%+u]\n", 4294967295u);*/
+	printf("[%#6o]\n", 2500);
+	ft_printf("[%#6o]\n", 2500);
 	return (0);
 }
