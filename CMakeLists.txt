@@ -12,4 +12,5 @@ add_executable(printf
         ${LIBPATH}/ft_printf ${LIBPATH}/parsers ${LIBPATH}/ft_atoi ${LIBPATH}/ft_memalloc
         ${LIBPATH}/ft_bzero main libft/ft_flagstr.c
         ${LIBPATH}/ft_strlen libft/ft_putnstr.c libft/ft_flagpercent.c libft/ft_flagchar.c libft/ft_strchr.c
-        libft/flag_unsignedint.c libft/ft_putunsignednbr.c libft/flag_o.c libft/ft_swap.c)
+        libft/flag_unsignedint.c libft/ft_putunsignednbr.c libft/flag_o.c libft/ft_swap.c libft/ft_max.c
+        libft/ft_intlen.c libft/ft_unsignedintlen.c libft/ft_itoabase.c libft/ft_reverse.c)

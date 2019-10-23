@@ -1,30 +1,36 @@
 #include "libft.h"
 
-int			ft_intlen(long long int num)
+void		ft_int(char *ss, va_list ap)
 {
-	int						i;
-	signed long long int	base;
+	int				size;
+	long long int 	num;
 
-	i = 19;
-	base = 1000000000000000000;
-	if (num < 0)
-		num = -num;
-	if (num == 0)
-		return (1);
-	while (42)
+	size = ft_parse_size(ss);
+	if (size == h)
 	{
-		if (num / base)
-			return (i);
-		base /= 10;
-		i--;
+		num = va_arg(ap, int);
+		ft_flagint((short int)num, ss);
 	}
-}
-
-int 		ft_max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
+	if (size == hh)
+	{
+		num = va_arg(ap, int);
+		ft_flagint((signed char)num, ss);
+	}
+	if (size == l)
+	{
+		num = va_arg(ap, long int);
+		ft_flagint((long int)num, ss);
+	}
+	if (size == ll)
+	{
+		num = va_arg(ap, long long int);
+		ft_flagint(num, ss);
+	}
+	if (size == 0)
+	{
+		num = va_arg(ap, int);
+		ft_flagint((int)num, ss);
+	}
 }
 
 void		ft_intleft(long long num, t_format form)

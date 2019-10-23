@@ -45,6 +45,10 @@ typedef  struct				s_format
 
 int kolvo;
 
+/*
+ * part1 functions from libft subject ecole 42
+ */
+
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
@@ -76,10 +80,12 @@ int					ft_isprint(int ch);
 int					ft_toupper(int ch);
 int					ft_tolower(int ch);
 
+/*
+ * part2 functions libft subject ecole 42
+ */
+
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
-void				ft_swap(int *a, int *b);
-void 				ft_memswap(char *s1,char *s2);
 char				*ft_strnew(size_t size);
 void				ft_strdel(char **as);
 void				ft_strclr(char *s);
@@ -93,7 +99,6 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
-char				*ft_itoabase(long long num, char* str, int base);
 char				**ft_strsplit(char const *s, char c);
 void				ft_putnbrpos(long long int nb);
 void				ft_putunsignednbrpos(unsigned long long nb);
@@ -104,9 +109,11 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-void 				ft_write(int c);
-void 				ft_putnstr(char *str, size_t n);
-int					ft_module(int a);
+
+/*
+ * bonus functions libft subject ecole 42
+ */
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -115,7 +122,23 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 void				ft_lstiter(t_list *lst, void (*f)(t_list
 *elem));
 
+void 				ft_write(int c);
+void 				ft_putnstr(char *str, size_t n);
+int					ft_module(int a);
+void 				ft_memswap(char *s1,char *s2);
+int 				ft_max(int a, int b);
+char				*ft_itoabase(long long num, char* str, int base);
+void 				reverse(char str[], int length);
+
+/*
+ * printf function
+ */
+
 int					ft_printf(char* format, ...);
+int					ft_format(char *ss, va_list ap);
+/*
+ * parsers for format-string: width, precision, flags, conversion and type
+ */
 
 int 				ft_len_to_type(char *s);
 int 				ft_parse_name(char *s);
@@ -124,23 +147,39 @@ int 				ft_parse_width(char *ss);
 int 				ft_parse_precision(char *ss);
 int 				ft_parse_size(char *ss);
 
+/*
+ * int handlers
+ */
+
+void				ft_int(char *ss, va_list ap);
 void				ft_flagint(long long num, char *ss);
 int					ft_intlen(long long int num);
 void				ft_intleft(long long num, t_format form);
 void				ft_intright(long long num, t_format form);
 
+/*
+ * str handlers
+ */
+
 void 				ft_flagstr(char *str, char *ss);
 void 				ft_flagpercent(char *ss);
 void				ft_flagchar(char *ss, int c);
 
-void				ft_flagunsignedint(unsigned long long num, char *ss);
+/*
+ * unsigned int handlers
+ */
+
 void				ft_unsignedint(char *ss, va_list ap);
+void				ft_flagunsignedint(unsigned long long num, char *ss);
 void				ft_unsignedintright(unsigned long long num, t_format form);
 void				ft_unsignedintleft(unsigned long long num, t_format form);
 int					ft_unsignedintlen(unsigned long long int num);
-int 				ft_max(int a, int b);
 
-void				ft_flago(char *ss, va_list ap, int base);
-void				ft_printoctet(long long num, char *ss, int base);
+/*
+ * octet handlers
+ */
+
+void				ft_octet(char *ss, va_list ap, int base);
+void				ft_flagoctet(long long num, char *ss, int base);
 
 #endif

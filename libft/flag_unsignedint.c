@@ -1,20 +1,35 @@
 #include "libft.h"
 
-int			ft_unsignedintlen(unsigned long long int num)
+void		ft_unsignedint(char *ss, va_list ap)
 {
-	int						i;
-	signed long long int	base;
+	int 			size;
+	unsigned	long	long num;
 
-	i = 19;
-	base = 1000000000000000000;
-	if (num == 0)
-		return (1);
-	while (42)
+	size = ft_parse_size(ss);
+	if (size == h)
 	{
-		if (num / base)
-			return (i);
-		base /= 10;
-		i--;
+		num = va_arg(ap, unsigned int);
+		ft_flagunsignedint((short unsigned int)num, ss);
+	}
+	if (size == hh)
+	{
+		num = va_arg(ap, unsigned int);
+		ft_flagunsignedint((unsigned char)num, ss);
+	}
+	if (size == l)
+	{
+		num = va_arg(ap, unsigned long int);
+		ft_flagunsignedint((unsigned long int)num, ss);
+	}
+	if (size == ll)
+	{
+		num = va_arg(ap, unsigned long long int);
+		ft_flagunsignedint((unsigned long long)num, ss);
+	}
+	if (size == 0)
+	{
+		num = va_arg(ap, unsigned int);
+		ft_flagunsignedint((unsigned int)num, ss);
 	}
 }
 

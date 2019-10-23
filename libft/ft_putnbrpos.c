@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	long long	ft_whtnbr(long long num)
+static		int		ft_whtnbr(long long num)
 {
 	int		i;
 	unsigned long long k;
