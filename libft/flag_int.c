@@ -36,7 +36,7 @@ void		ft_intleft(long long num, t_format form)
 	width = 0;
 	if (form.width < max)
 		form.width = max;
-	if (SPACE && !PLUS)
+	if (SPACE && !PLUS && num >= 0)
 		ft_write(' ');
 	if (PLUS || num <= 0)
 	{
@@ -57,14 +57,21 @@ void		ft_intright(long long num, t_format form)
 {
 	int 	width;
 	int 	max;
+	int 	len;
 
-	max = ft_max(form.precision, ft_intlen(num));
+	len = ft_intlen(num);
+	if (!form.precision && num == 0)
+		len = 0;
+	max = ft_max(form.precision, len);
 	width = 0;
 	if (form.width < max)
 		form.width = max;
-	if (SPACE && !PLUS)
+	if (SPACE && !PLUS && num >=0)
+	{
 		ft_write(' ');
-	while ((width < form.width - max - ft_max(PLUS, num <= 0)) && !ZERO)
+		form.width--;
+	}
+	while ((width < form.width - max - ft_max(PLUS, num < 0)) && !(ZERO && form.precision == -1))
 	{
 		ft_write(' ');
 		width++;
@@ -76,9 +83,10 @@ void		ft_intright(long long num, t_format form)
 	}
 	if (form.precision >= form.width && (PLUS || (num < 0)))
 		width--;
-	while ((width++ < form.width - ft_intlen(num)) && (form.precision > ft_intlen(num) || (ZERO && form.precision == -1)))
+	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
 		ft_write('0');
-	ft_putnbrpos(num);
+	if (form.precision || num != 0)
+		ft_putnbrpos(num);
 }
 
 void		ft_flagint(long long num, char *ss)

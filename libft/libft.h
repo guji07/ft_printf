@@ -24,6 +24,10 @@
 #define ZERO form.flag[2]
 #define HASHTAG form.flag[3]
 #define SPACE form.flag[4]
+#define h 1
+#define hh 2
+#define l 3
+#define ll 4
 
 typedef	struct		s_list
 {
@@ -89,6 +93,7 @@ char				*ft_strtrim(char const *s);
 char				*ft_itoa(int n);
 char				**ft_strsplit(char const *s, char c);
 void				ft_putnbrpos(long long int nb);
+void				ft_putunsignednbrpos(unsigned long long nb);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -115,6 +120,7 @@ int					*ft_parse_flag(int num, char *ss);
 int 				ft_parse_width(char *ss);
 int 				ft_parse_precision(char *ss);
 int 				ft_parse_size(char *ss);
+
 void				ft_flagint(long long num, char *ss);
 int					ft_intlen(long long int num);
 void				ft_intleft(long long num, t_format form);
@@ -123,4 +129,12 @@ void				ft_intright(long long num, t_format form);
 void 				ft_flagstr(char *str, char *ss);
 void 				ft_flagpercent(char *ss);
 void				ft_flagchar(char *ss, int c);
+
+void				ft_flagunsignedint(unsigned long long num, char *ss);
+void				ft_unsignedint(char *ss, va_list ap);
+void				ft_unsignedintright(unsigned long long num, t_format form);
+void				ft_unsignedintleft(unsigned long long num, t_format form);
+int					ft_unsignedintlen(unsigned long long int num);
+int 				ft_max(int a, int b);
+
 #endif

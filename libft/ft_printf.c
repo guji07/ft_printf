@@ -1,16 +1,69 @@
 #include "libft.h"
 
-void			ft_int(char *ss, va_list ap)
+void			ft_unsignedint(char *ss, va_list ap)
 {
-	int 	size;
+	int 			size;
+	unsigned	long	long num;
 
 	size = ft_parse_size(ss);
-	if (size == 0 || size == 1 || size == 2)
-		ft_flagint(va_arg(ap, int), ss);
-	if (size == 3)
-		ft_flagint(va_arg(ap, long int), ss);
-	if (size == 4)
-		ft_flagint(va_arg(ap, long long int), ss);
+	if (size == h)
+	{
+		num = va_arg(ap, unsigned int);
+		ft_flagunsignedint((short unsigned int)num, ss);
+	}
+	if (size == hh)
+	{
+		num = va_arg(ap, unsigned int);
+		ft_flagunsignedint((unsigned char)num, ss);
+	}
+	if (size == l)
+	{
+		num = va_arg(ap, unsigned long int);
+		ft_flagunsignedint((unsigned long int)num, ss);
+	}
+	if (size == ll)
+	{
+		num = va_arg(ap, unsigned long long int);
+		ft_flagunsignedint((unsigned long long)num, ss);
+	}
+	if (size == 0)
+	{
+		num = va_arg(ap, unsigned int);
+		ft_flagunsignedint((unsigned int)num, ss);
+	}
+}
+
+void			ft_int(char *ss, va_list ap)
+{
+	int				size;
+	long long int 	num;
+
+	size = ft_parse_size(ss);
+	if (size == h)
+	{
+		num = va_arg(ap, int);
+		ft_flagint((short int)num, ss);
+	}
+	if (size == hh)
+	{
+		num = va_arg(ap, int);
+		ft_flagint((signed char)num, ss);
+	}
+	if (size == l)
+	{
+		num = va_arg(ap, long int);
+		ft_flagint((long int)num, ss);
+	}
+	if (size == ll)
+	{
+		num = va_arg(ap, long long int);
+		ft_flagint(num, ss);
+	}
+	if (size == 0)
+	{
+		num = va_arg(ap, int);
+		ft_flagint((int)num, ss);
+	}
 }
 
 int				ft_format(char *ss, va_list ap)
@@ -26,7 +79,7 @@ int				ft_format(char *ss, va_list ap)
 		if (type >= 30 && type < 40)
 			ft_int(ss, ap);
 		if (type >= 40 && type < 50)
-			return (1);
+			ft_unsignedint(ss, ap);
 		if (type == 100)
 			ft_flagpercent(ss);
 	}

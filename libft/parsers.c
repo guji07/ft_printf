@@ -124,11 +124,11 @@ int 		ft_parse_name(char *s)
 			return (20);
 		if (s[i] == 'd' || s[i] == 'i')
 			return (30);
-		if (s[i] == 'p')
+		if (s[i] == 'u')
 			return (40);
 		if (s[i] == 'o')
 			return (50);
-		if (s[i] == 'u')
+		if (s[i] == 'p')
 			return (60);
 		if (s[i] == 'x')
 			return (70);

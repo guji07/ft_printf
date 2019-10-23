@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	long long	ft_whtnbr(long long num)
+static	int	ft_uwhtnbr(unsigned long long num)
 {
 	int		i;
 	unsigned long long k;
@@ -23,15 +23,13 @@ static	long long	ft_whtnbr(long long num)
 		i = 2;
 	else if (num > 0)
 		i = 0;
-	else if ((num < 0))
-		i = 1;
 	return (i);
 }
 
-static		void	ft_screen(long long nb)
+static		void	ft_uscreen(unsigned long long nb)
 {
-	long	long	div;
-	long	long	n;
+	unsigned long	long	div;
+	unsigned long	long	n;
 
 	n = 1;
 	div = 1;
@@ -49,22 +47,22 @@ static		void	ft_screen(long long nb)
 	}
 }
 
-void			ft_putnbrpos(long long nb)
+void			ft_putunsignednbrpos(unsigned long long nb)
 {
 	int 	flag;
 
-	flag = ft_whtnbr(nb);
+	flag = ft_uwhtnbr(nb);
 	if (flag == 0)
-		ft_screen(nb);
+		ft_uscreen(nb);
 	else if (flag == 1)
 	{
 		nb = nb * (-1);
-		ft_screen(nb);
+		ft_uscreen(nb);
 	}
 	else if (flag == 2)
 	{
 		nb = nb / 10;
-		ft_screen(-nb);
+		ft_uscreen(-nb);
 		ft_putchar('8');
 	}
 }
