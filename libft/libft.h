@@ -140,7 +140,7 @@ void				ft_unsignedintleft(unsigned long long num, t_format form);
 int					ft_unsignedintlen(unsigned long long int num);
 int 				ft_max(int a, int b);
 
-void				flag_o(long long num, char *ss);
-void				ft_printoctet(long long num, char *ss);
+void				ft_flago(char *ss, va_list ap, int base);
+void				ft_printoctet(long long num, char *ss, int base);
 
 #endif

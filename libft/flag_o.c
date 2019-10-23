@@ -94,7 +94,7 @@ void				ft_rigthoctet(char *str, t_format form)
 		ft_putstr(str);
 }
 
-void				ft_printoctet(long long num, char *ss)
+void				ft_printoctet(long long num, char *ss, int base)
 {
 	t_format	form;
 	char		*str;
@@ -103,11 +103,44 @@ void				ft_printoctet(long long num, char *ss)
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
-	ft_itoabase(num, str, 8);
+	ft_itoabase(num, str, base);
 	if (!MINUS)
 		ft_rigthoctet(str, form);
 	else
 		ft_leftoctet(str, form);
 	free(str);
 	free(form.flag);
+}
+
+void				ft_flago(char *ss, va_list ap, int base)
+{
+	int				size;
+	long long int 	num;
+
+	size = ft_parse_size(ss);
+	if (size == h)
+	{
+		num = va_arg(ap, int);
+		ft_printoctet((short int)num, ss, base);
+	}
+	if (size == hh)
+	{
+		num = va_arg(ap, int);
+		ft_printoctet((signed char)num, ss, base);
+	}
+	if (size == l)
+	{
+		num = va_arg(ap, long int);
+		ft_printoctet((long int)num, ss, base);
+	}
+	if (size == ll)
+	{
+		num = va_arg(ap, long long int);
+		ft_printoctet(num, ss, base);
+	}
+	if (size == 0)
+	{
+		num = va_arg(ap, int);
+		ft_printoctet((int)num, ss, base);
+	}
 }

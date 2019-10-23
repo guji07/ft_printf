@@ -55,8 +55,12 @@ int main(void)
 	printf("[%-15u]\n", 4294967295u);
 	ft_printf("[%-15u]\n", 4294967295);
 	printf("[%u]\n", 4294967295u);
-	ft_printf("[%+u]\n", 4294967295u);*/
+	ft_printf("[%+u]\n", 4294967295u);
 	printf("[%#6o]\n", 2500);
-	ft_printf("[%#6o]\n", 2500);
+	ft_printf("[%#6o]\n", 2500);*/
+	printf("[%x]\n", -42);
+	ft_printf("[%x]\n", -42);
+	printf("[%x]\n", 42);
+	ft_printf("[%x]\n", 42);
 	return (0);
 }
