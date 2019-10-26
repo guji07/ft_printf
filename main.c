@@ -71,11 +71,22 @@ int main(void)
 	//printf("[%3.2o]\n", 123);
 	//ft_printf("[%3.2o]\n", 123);
 	//printf("[%-5.10lo]\n", 123l);
-	//ft_printf("[%-5.10lo]\n", 123l);*/
+	//ft_printf("[%-5.10lo]\n", 123l);
 	printf("[%x]\n", 53125);
 	ft_printf("[%x]\n", 53125);
 	int i = 123132;
 	printf("%20p\n", &i);
 	ft_printf("%20p", &i);
+	printf("[%x]\n", -42);
+	ft_printf("[%x]\n", -42);
+	printf("[%#x]\n", 17);
+	ft_printf("[%#x]\n", 17);
+	int i = malloc(1);
+	printf("%p\n", &i);
+	ft_printf("%p\n", &i);
+	//printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
+	//ft_printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);*/
+	printf("%o, %ho, %hho\n", -42, -42, -42);
+	ft_printf("%o, %ho, %hho", -42, -42, -42);
 	return (0);
 }

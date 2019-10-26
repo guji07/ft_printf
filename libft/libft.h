@@ -128,6 +128,7 @@ int					ft_module(int a);
 void 				ft_memswap(char *s1,char *s2);
 int 				ft_max(int a, int b);
 char				*ft_itoabase(long long num, char* str, int base);
+char				*ft_itoabaseunsigned(unsigned long long num, char* str, int base);
 void 				reverse(char str[], int length);
 void				ft_putupstr(char *s);
 /*
@@ -180,7 +181,7 @@ int					ft_unsignedintlen(unsigned long long int num);
  */
 
 void				ft_octet(char *ss, va_list ap);
-void				ft_flagoctet(long long num, char *ss);
+void				ft_flagoctet(unsigned long long num, char *ss);
 void				ft_octetright(char *str, t_format form);
 void				ft_octetleft(char *str, t_format form);
 /*

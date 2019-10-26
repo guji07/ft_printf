@@ -22,7 +22,7 @@ void 	ft_flagstr(char *str, char *ss)
 		}
 		else
 		{
-			if (form.width > n)
+			if (form.width > n || form.precision < form.width)
 				while (i++ < form.width - (n < form.precision ? n : form.precision))
 					ft_write(' ');
 			ft_putnstr(str, form.precision);

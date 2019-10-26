@@ -30,7 +30,7 @@ void				ft_octetright(char *str, t_format form)
 	int 	len;
 
 	width = 0;
-	if (HASHTAG)
+	if (HASHTAG && (!ft_strequ("0", str)))
 		width++;
 	len = ft_strlen(str);
 	if (!form.precision && str[0] == '0')
@@ -43,7 +43,7 @@ void				ft_octetright(char *str, t_format form)
 		ft_write(' ');
 		width++;
 	}
-	if (HASHTAG)
+	if (HASHTAG && (!ft_strequ("0", str)))
 		ft_write('0');
 	if (form.precision >= form.width && (PLUS))
 		width--;
@@ -53,7 +53,7 @@ void				ft_octetright(char *str, t_format form)
 		ft_putstr(str);
 }
 
-void				ft_flagoctet(long long num, char *ss)
+void				ft_flagoctet(unsigned long long num, char *ss)
 {
 	t_format	form;
 	char		*str;
@@ -62,7 +62,7 @@ void				ft_flagoctet(long long num, char *ss)
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
-	ft_itoabase(num, str, 8);
+	ft_itoabaseunsigned(num, str, 8);
 	if (!MINUS)
 		ft_octetright(str, form);
 	else
@@ -73,31 +73,31 @@ void				ft_flagoctet(long long num, char *ss)
 
 void				ft_octet(char *ss, va_list ap)
 {
-	int				size;
-	long long int 	num;
+	int							size;
+	unsigned	long	long  	num;
 
 	size = ft_parse_size(ss);
 	if (size == h)
 	{
-		num = va_arg(ap, int);
-		ft_flagoctet((short int)num, ss);
+		num = va_arg(ap, unsigned int);
+		ft_flagoctet((short unsigned)num, ss);
 	}
-	if (size == hh)
+	else if (size == hh)
 	{
-		num = va_arg(ap, int);
-		ft_flagoctet((signed char)num, ss);
+		num = va_arg(ap, unsigned int);
+		ft_flagoctet((unsigned char)num, ss);
 	}
-	if (size == l)
+	else if (size == l)
 	{
-		num = va_arg(ap, long int);
-		ft_flagoctet((long int)num, ss);
+		num = va_arg(ap, unsigned long int);
+		ft_flagoctet((unsigned long int)num, ss);
 	}
-	if (size == ll)
+	else if (size == ll)
 	{
-		num = va_arg(ap, long long int);
+		num = va_arg(ap, unsigned long long int);
 		ft_flagoctet(num, ss);
 	}
-	if (size == 0)
+	else if (size == 0)
 	{
 		num = va_arg(ap, int);
 		ft_flagoctet((int)num, ss);
