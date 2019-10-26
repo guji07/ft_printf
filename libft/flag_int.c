@@ -44,7 +44,7 @@ void		ft_intleft(long long num, t_format form)
 		form.width = max;
 	if (SPACE && !PLUS && num >= 0)
 		ft_write(' ');
-	if (PLUS || num <= 0)
+	if (PLUS || num < 0)
 	{
 		ft_write(num >= 0  ? '+' : '-');
 		width++;

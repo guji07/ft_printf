@@ -85,8 +85,10 @@ int main(void)
 	printf("%p\n", &i);
 	ft_printf("%p\n", &i);
 	//printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
-	//ft_printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);*/
-	printf("%o, %ho, %hho\n", -42, -42, -42);
-	ft_printf("%o, %ho, %hho", -42, -42, -42);
+	//ft_printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
+	printf("{%0-3d}\n", 0);
+	ft_printf("{%0-3d}", 0);*/
+	printf("[%.0p] [%.p]\n", 0, 0);
+	ft_printf("[%.0p] [%.p]\n", 0, 0);
 	return (0);
 }

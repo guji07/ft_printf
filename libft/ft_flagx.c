@@ -8,17 +8,22 @@ void				ft_xtetleft(char *str, t_format form, int mode)
 	width = 0;
 	if (HASHTAG && !ft_strequ("0", str))
 		width += 2;
+	if (mode == 3)
+		width += 2;
 	max = ft_max(form.precision, ft_strlen(str));
 	if (form.width < max)
 		form.width = max;
 	while (width++ < form.precision - (int)ft_strlen(str) + PLUS)
 		ft_write('0');
-	if (HASHTAG && !ft_strequ("0", str))
-		ft_putstr(mode == 2 ? "0X" : "0x");
 	if (mode == 2)
 		ft_putupstr(str);
-	else
+	else if (mode == 1)
 		ft_putstr(str);
+	else if (mode == 3 && (form.precision  || str[0] != '0'))
+	{
+		ft_putstr("0x");
+		ft_putstr(str);
+	}
 	while ((width < form.width - (int)ft_strlen(str) + !SPACE))
 	{
 		ft_write(' ');
