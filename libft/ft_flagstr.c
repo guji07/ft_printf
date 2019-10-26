@@ -11,24 +11,24 @@ void 	ft_flagstr(char *str, char *ss)
 		n = ft_strlen(str);
 		i = 0;
 		form.width = ft_parse_width(ss);
-		form.precision = (int) (ft_parse_precision(ss) == -1 ? n : ft_parse_precision(ss));
+		form.precision = (int)(ft_parse_precision(ss));
 		form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
-		if (form.flag[0] == 1)
+		if (MINUS)
 		{
 			ft_putnstr(str, form.precision);
-			if (form.width > n)
-				while (i++ < form.width - (n < form.precision ? n : form.precision))
-					ft_write(' ');
+			i += (((form.precision > n) || (form.precision == -1)) ? n : form.precision);
+			while (i++ < form.width)
+				ft_write(' ');
 		}
 		else
 		{
-			if (form.width > n || form.precision < form.width)
-				while (i++ < form.width - (n < form.precision ? n : form.precision))
-					ft_write(' ');
+			i += (((form.precision > n) || (form.precision == -1)) ? n : form.precision);
+			while (i++ < form.width)
+				ft_write(' ');
 			ft_putnstr(str, form.precision);
 		}
 		free(form.flag);
 	}
 	else
-		ft_putstr("(null)");
+		ft_flagstr("(null)", ss);
 }

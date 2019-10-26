@@ -61,8 +61,8 @@ int main(void)
 	printf("[%x]\n", -42);
 	ft_printf("[%x]\n", -42);
 	printf("[%x]\n", 42);
-	ft_printf("[%x]\n", 42);*/
-	/*printf("[%o]\n", 123);
+	ft_printf("[%x]\n", 42);
+	printf("[%o]\n", 123);
 	ft_printf("[%o]\n", 123);
 	printf("[%lo]\n", 123l);
 	ft_printf("[%lo]\n", 123l);
@@ -88,7 +88,7 @@ int main(void)
 	//ft_printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
 	printf("{%0-3d}\n", 0);
 	ft_printf("{%0-3d}", 0);*/
-	printf("[%.0p] [%.p]\n", 0, 0);
-	ft_printf("[%.0p] [%.p]\n", 0, 0);
+	printf("%3.2s", NULL);
+	ft_printf("%3.2s\n", NULL);
 	return (0);
 }
