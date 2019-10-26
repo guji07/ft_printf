@@ -1,5 +1,5 @@
 #include "libft/libft.h"
-
+//all p,i,s,d,u,c
 int main(void)
 {
 	/*printf("[%i]\n", -2222123);
@@ -48,15 +48,15 @@ int main(void)
 	printf("[@moulitest: %.d %.0d]\n", 0, 0);
 	ft_printf("[@moulitest: %.d %.0d]\n", 0, 0);
 	printf("[@moulitest: %5.d %5.0d]\n", 0, 0);
-	ft_printf("[@moulitest: %5.d %5.0d]\n", 0, 0);
+	ft_printf("[@moulitest: %5.d %5.0d]\n", 0, 0);*/
 	//unsigned ints:
-	printf("[% u]\n", 4294967295u);
+	/*printf("[% u]\n", 4294967295u);
 	ft_printf("[% u]\n", 4294967295);
 	printf("[%-15u]\n", 4294967295u);
 	ft_printf("[%-15u]\n", 4294967295);
 	printf("[%u]\n", 4294967295u);
-	ft_printf("[%+u]\n", 4294967295u);
-	printf("[%#6o]\n", 2500);
+	ft_printf("[%+u]\n", 4294967295u);*/
+	/*printf("[%#6o]\n", 2500);
 	ft_printf("[%#6o]\n", 2500);
 	printf("[%x]\n", -42);
 	ft_printf("[%x]\n", -42);
@@ -73,8 +73,8 @@ int main(void)
 	//printf("[%-5.10lo]\n", 123l);
 	//ft_printf("[%-5.10lo]\n", 123l);
 	printf("[%x]\n", 53125);
-	ft_printf("[%x]\n", 53125);
-	int i = 123132;
+	ft_printf("[%x]\n", 53125);*/
+	/*int i = 123132;
 	printf("%20p\n", &i);
 	ft_printf("%20p", &i);
 	printf("[%x]\n", -42);
@@ -87,8 +87,21 @@ int main(void)
 	//printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
 	//ft_printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
 	printf("{%0-3d}\n", 0);
-	ft_printf("{%0-3d}", 0);*/
-	printf("%3.2s", NULL);
-	ft_printf("%3.2s\n", NULL);
-	return (0);
+	ft_printf("{%0-3d}", 0);
+	printf("[% .5i]\n", 2);
+	ft_printf("[% .5i]\n", 2);
+	printf("% +-8.5i]\n", 34);
+	ft_printf("% +-8.5i]\n", 34);
+	printf("[% -7i]\n", -14);
+	ft_printf("[% -7i]\n", -14);
+	printf("[%-5.0i]\n", 0);
+	ft_printf("[%-5.0i]\n", 0);
+	int i_pos_1 = 878023;
+	int sh_pos_1 = 3047;
+	printf("[%d] [%hd]", i_pos_1, sh_pos_1);
+	printf("[%-5.0u]\n", 0);
+	ft_printf("[%-5.0u]\n", 0);*/
+	printf("[%3o]\n", 0);
+	ft_printf("[%3o]\n", 0);
+	return	(0);
 }

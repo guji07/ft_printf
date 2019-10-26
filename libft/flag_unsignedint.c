@@ -44,7 +44,10 @@ void		ft_unsignedintleft(unsigned long long num, t_format form)
 		form.width = max;
 	while (width++ < form.precision - ft_unsignedintlen(num) + PLUS)
 		ft_write('0');
-	ft_putunsignednbrpos(num);
+	if (form.precision || num != 0)
+		ft_putunsignednbrpos(num);
+	else
+		width--;
 	while ((width < form.width - ft_unsignedintlen(num) + !SPACE))
 	{
 		ft_write(' ');

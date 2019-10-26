@@ -4,19 +4,23 @@ void				ft_octetleft(char *str, t_format form)
 {
 	int 	width;
 	int 	max;
+	int 	len;
 
+	len = ft_strlen(str);
 	width = 0;
 	if (HASHTAG)
 		width++;
-	max = ft_max(form.precision, ft_strlen(str));
+	max = ft_max(form.precision, len);
 	if (form.width < max)
 		form.width = max;
-	while (width++ < form.precision - (int)ft_strlen(str) + PLUS)
+	while (width++ < form.precision - len + PLUS)
 		ft_write('0');
-	if (HASHTAG)
+	if (HASHTAG && (!ft_strequ("0", str)))
 		ft_write('0');
+	if (form.precision == -1 && (ft_strequ("0", str)))
+		width--;
 	ft_putstr(str);
-	while ((width < form.width - (int)ft_strlen(str) + !SPACE))
+	while ((width < form.width - len + !SPACE))
 	{
 		ft_write(' ');
 		width++;
@@ -99,7 +103,7 @@ void				ft_octet(char *ss, va_list ap)
 	}
 	else if (size == 0)
 	{
-		num = va_arg(ap, int);
-		ft_flagoctet((int)num, ss);
+		num = va_arg(ap, unsigned int);
+		ft_flagoctet((unsigned int)num, ss);
 	}
 }
