@@ -14,5 +14,5 @@
 
 void	ft_putchar(char c)
 {
-	ft_write(c);
+	ft_write(&c, 1);
 }

@@ -10,14 +10,14 @@ void  	ft_flagpercent(char *ss)
 	i = 1;
 	if (MINUS)
 	{
-		ft_write('%');
+		ft_write("%", 1);
 		while (i++ < form.width)
-			ft_write(' ');
+			ft_write(" ", 1);
 		return;
 	}
 	while (i++ < form.width)
-		ft_write(ZERO ? '0' : ' ');
+		ft_write(ZERO ? "0" : " ", 1);
 	if (MINUS == 0)
-		ft_write('%');
+		ft_write("%", 1);
 	free(form.flag);
 }

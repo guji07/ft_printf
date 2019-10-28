@@ -28,6 +28,7 @@
 #define hh 2
 #define l 3
 #define ll 4
+#define Lf 5
 
 typedef	struct		s_list
 {
@@ -122,7 +123,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 void				ft_lstiter(t_list *lst, void (*f)(t_list
 *elem));
 
-void 				ft_write(int c);
+void 				ft_write(char *s, int len);
 void 				ft_putnstr(char *str, size_t n);
 int					ft_module(int a);
 void 				ft_memswap(char *s1,char *s2);
@@ -164,7 +165,7 @@ void				ft_intright(long long num, t_format form);
 
 void 				ft_flagstr(char *str, char *ss);
 void 				ft_flagpercent(char *ss);
-void				ft_flagchar(char *ss, int c);
+void				ft_flagchar(char *ss, char c);
 
 /*
  * unsigned int handlers(u)
@@ -182,10 +183,12 @@ int					ft_unsignedintlen(unsigned long long int num);
 
 void				ft_octet(char *ss, va_list ap);
 void				ft_flagoctet(unsigned long long num, char *ss);
-void				ft_octetright(char *str, t_format form);
-void				ft_octetleft(char *str, t_format form);
 /*
  * base 16 ints handlers(xX)
  */
 void				ft_xtet(char *ss, va_list ap, int mode);
+/*
+ * floats handlers
+ */
+
 #endif

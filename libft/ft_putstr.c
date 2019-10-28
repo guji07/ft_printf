@@ -18,9 +18,8 @@ void	ft_putstr(char const *s)
 
 	if (s)
 	{
-		i = -1;
-		while (s[++i])
-			ft_write(s[i]);
+		i = ft_strlen(s);
+		ft_write((char*)s, i);
 	}
 	else
 		ft_putstr("(null)");

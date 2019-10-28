@@ -8,9 +8,9 @@ void		ft_putupstr(char *s)
 	while (s[i])
 	{
 		if (s[i] >= 'a' && s[i] <= 'z')
-			ft_write(s[i] - 32);
+			ft_putchar(s[i] - 32);
 		else
-			ft_write(s[i]);
+			ft_write(s + i, 1);
 		i++;
 	}
 }

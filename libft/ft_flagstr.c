@@ -18,13 +18,13 @@ void 	ft_flagstr(char *str, char *ss)
 			ft_putnstr(str, form.precision);
 			i += (((form.precision > n) || (form.precision == -1)) ? n : form.precision);
 			while (i++ < form.width)
-				ft_write(' ');
+				ft_write(" ", 1);
 		}
 		else
 		{
 			i += (((form.precision > n) || (form.precision == -1)) ? n : form.precision);
 			while (i++ < form.width)
-				ft_write(' ');
+				ft_write(" ", 1);
 			ft_putnstr(str, form.precision);
 		}
 		free(form.flag);

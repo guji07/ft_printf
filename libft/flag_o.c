@@ -8,21 +8,22 @@ void				ft_octetleft(char *str, t_format form)
 
 	len = ft_strlen(str);
 	width = 0;
-	if (HASHTAG)
+	if (HASHTAG && ((!ft_strequ("0", str))) && form.precision < len)
 		width++;
 	max = ft_max(form.precision, len);
 	if (form.width < max)
 		form.width = max;
 	while (width++ < form.precision - len + PLUS)
-		ft_write('0');
-	if (HASHTAG && (!ft_strequ("0", str)))
-		ft_write('0');
-	if (form.precision == -1 && (ft_strequ("0", str)))
+		ft_write("0", 1);
+	if (HASHTAG && ((!ft_strequ("0", str))) && form.precision <= len)
+		ft_write("0", 1);
+	if (HASHTAG && form.precision == -1 && (ft_strequ("0", str)))
 		width--;
 	ft_putstr(str);
-	while ((width < form.width - len + !SPACE))
+	width--;
+	while ((width < form.width - len))
 	{
-		ft_write(' ');
+		ft_write(" ", 1);
 		width++;
 	}
 }
@@ -33,10 +34,10 @@ void				ft_octetright(char *str, t_format form)
 	int 	max;
 	int 	len;
 
-	width = 0;
-	if (HASHTAG && (!ft_strequ("0", str)))
-		width++;
 	len = ft_strlen(str);
+	width = 0;
+	if (HASHTAG && ((!ft_strequ("0", str))) && form.precision < len)
+		width++;
 	if (!form.precision && str[0] == '0')
 		len = 0;
 	max = ft_max(form.precision, len);
@@ -44,17 +45,49 @@ void				ft_octetright(char *str, t_format form)
 		form.width = max;
 	while ((width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
 	{
-		ft_write(' ');
+		ft_write(" ", 1);
 		width++;
 	}
-	if (HASHTAG && (!ft_strequ("0", str)))
-		ft_write('0');
 	if (form.precision >= form.width && (PLUS))
 		width--;
 	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
-		ft_write('0');
+		ft_write("0", 1);
+	if (HASHTAG && ((!ft_strequ("0", str))) && form.precision <= len)
+		ft_write("0", 1);
 	if (form.precision || str[0] != '0')
 		ft_putstr(str);
+}
+
+void				ft_writezeros(char *str, t_format form)
+{
+	int 	i;
+
+	i = 0;
+	//form.width = ft_max(ft_strlen(str), form.width);
+	if (!MINUS)
+	{
+		while (i < form.width - ft_max(form.precision, ft_strlen(str)))
+		{
+			ft_write(" ", 1);
+			i++;
+		}
+		if (HASHTAG)
+			ft_write("0", 1);
+		else if (form.precision != 0)
+			ft_write(" ", 1);
+	}
+	else
+	{
+		if (HASHTAG)
+			ft_write("0", 1);
+		else if (form.width)
+			ft_write(" ", 1);
+		while (i < form.width - ft_max(form.precision, ft_strlen(str)))
+		{
+			ft_write(" ", 1);
+			i++;
+		}
+	}
 }
 
 void				ft_flagoctet(unsigned long long num, char *ss)
@@ -67,7 +100,9 @@ void				ft_flagoctet(unsigned long long num, char *ss)
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
 	ft_itoabaseunsigned(num, str, 8);
-	if (!MINUS)
+	if (str[0] == '0' && !form.precision)
+		ft_writezeros(str, form);
+	else if (!MINUS)
 		ft_octetright(str, form);
 	else
 		ft_octetleft(str, form);

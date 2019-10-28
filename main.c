@@ -1,4 +1,5 @@
 #include "libft/libft.h"
+#include <limits.h>
 //all p,i,s,d,u,c
 int main(void)
 {
@@ -101,7 +102,14 @@ int main(void)
 	printf("[%d] [%hd]", i_pos_1, sh_pos_1);
 	printf("[%-5.0u]\n", 0);
 	ft_printf("[%-5.0u]\n", 0);*/
-	printf("[%3o]\n", 0);
-	ft_printf("[%3o]\n", 0);
-	return	(0);
+	//done: c, s, p, d, i, u
+	//need to do: x,X,o,f
+	/*printf("this %#o number]\n", 1);
+	ft_printf("this %#o number]\n", 1);
+	printf("this %#.o number]\n", 2);
+	ft_printf("this %#.o number]\n", 2);
+	printf("%#2o\n", 94827);
+	ft_printf("%#2o", 94827);*/
+	printf("%#-3o]\n", 0);
+	ft_printf("%#-3o]\n", 0);
 }

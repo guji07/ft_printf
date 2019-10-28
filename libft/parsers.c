@@ -5,7 +5,7 @@ int 		ft_parse_size(char *ss)
 	int 	i;
 
 	i = 0;
-	while (ss[i] && ss[i] != 'i')
+	while (ss[i] && ss[i] != 'i' && ss[i] != 'd')
 	{
 		if (ss[i] == 'h')
 		{
@@ -21,6 +21,8 @@ int 		ft_parse_size(char *ss)
 			else
 				return (3);
 		}
+		if (ss[i] == 'L' && ss[i + 1] == 'f')
+			return (5);
 		i++;
 	}
 	return (0);

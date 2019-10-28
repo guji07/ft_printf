@@ -16,10 +16,10 @@ int				ft_format(char *ss, va_list ap)
 			ft_unsignedint(ss, ap);
 		else if (type == 50)
 			ft_octet(ss, ap);
-		else if (type == 70)
-			ft_xtet(ss, ap, 1);
 		else if (type == 60)
             ft_xtet(ss, ap, 3);
+		else if (type == 70)
+			ft_xtet(ss, ap, 1);
 		else if (type == 80)
 			ft_xtet(ss, ap, 2);
 		else if (type == 90)
@@ -43,7 +43,7 @@ int				ft_printf(char* str, ...)
 	while (str[i])
 	{
 		if (str[i] != '%')
-			ft_write(*(str + i));
+			ft_write((str + i), 1);
 		else
 			i = i + ft_format(str + i, ap);
 		i++;

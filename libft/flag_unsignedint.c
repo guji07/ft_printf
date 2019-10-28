@@ -43,14 +43,14 @@ void		ft_unsignedintleft(unsigned long long num, t_format form)
 	if (form.width < max)
 		form.width = max;
 	while (width++ < form.precision - ft_unsignedintlen(num) + PLUS)
-		ft_write('0');
+		ft_write("0", 1);
 	if (form.precision || num != 0)
 		ft_putunsignednbrpos(num);
 	else
 		width--;
 	while ((width < form.width - ft_unsignedintlen(num) + !SPACE))
 	{
-		ft_write(' ');
+		ft_write(" ", 1);
 		width++;
 	}
 }
@@ -70,13 +70,13 @@ void		ft_unsignedintright(unsigned long long num, t_format form)
 		form.width = max;
 	while ((width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
 	{
-		ft_write(' ');
+		ft_write(" ", 1);
 		width++;
 	}
 	if (form.precision >= form.width && (PLUS))
 		width--;
 	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
-		ft_write('0');
+		ft_write("0", 1);
 	if (form.precision || num != 0)
 		ft_putunsignednbrpos(num);
 }
