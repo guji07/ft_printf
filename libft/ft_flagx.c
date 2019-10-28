@@ -1,4 +1,40 @@
 #include "libft.h"
+void				ft_costylleft(t_format form)
+{
+	int 	width;
+	int 	precision;
+
+	precision = form.precision;
+	width = form.width - precision;
+	while (precision > 0)
+	{
+		precision--;
+		ft_write("0", 1);
+	}
+	while (width > 0)
+	{
+		ft_write(" ", 1);
+		width--;
+	}
+}
+void				ft_costylright(t_format form)
+{
+	int 	width;
+	int 	precision;
+
+	precision = form.precision;
+	width = form.width - precision;
+	while (width > 0)
+	{
+		ft_write(" ", 1);
+		width--;
+	}
+	while (precision > 0)
+	{
+		precision--;
+		ft_write("0", 1);
+	}
+}
 
 void				ft_xtetleft(char *str, t_format form, int mode)
 {
@@ -66,7 +102,14 @@ void		ft_flagxtet(unsigned long long num, char *ss, int mode)
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
 	ft_itoabaseunsigned(num, str, 16);
-	if (MINUS)
+	if (str[0] == '0' && form.precision <= 0)
+	{
+		if (!MINUS)
+			ft_costylright(form);
+		else
+			ft_costylleft(form);
+	}
+	else if (MINUS)
 		ft_xtetleft(str, form, mode);
 	else
 		ft_xtetright(str, form, mode);
