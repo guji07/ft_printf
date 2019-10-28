@@ -190,5 +190,5 @@ void				ft_xtet(char *ss, va_list ap, int mode);
 /*
  * floats handlers
  */
-
+void				ft_ptet(char *ss, va_list ap);
 #endif

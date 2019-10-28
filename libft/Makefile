@@ -8,7 +8,7 @@ SRCS =      ft_atoi.c       ft_isascii.c    ft_memalloc.c   ft_memcpy.c     ft_p
             ft_strnew.c     ft_strstr.c     ft_toupper.c    ft_lstdelone.c  ft_lstnew.c     ft_lstdel.c		ft_lstadd.c  \
 			ft_lstiter.c    ft_lstmap.c     ft_printf.c		flag_int.c		parsers.c		ft_write.c		ft_putnstr.c \
 			ft_flagstr.c	ft_flagpercent.c				ft_flagchar.c	flag_unsignedint.c							 \
-			ft_putunsignednbr.c				ft_swap.c		ft_max.c		flag_o.c		ft_intlen.c		ft_flagf.c			 \
+			ft_putunsignednbr.c				ft_swap.c		ft_max.c		flag_o.c		ft_intlen.c					 \
 			ft_unsignedintlen.c				ft_itoabase.c	ft_reverse.c	ft_putupstr.c	ft_flagx.c
 
 OBJECTS	=   ft_atoi.o       ft_isascii.o    ft_memalloc.o   ft_memcpy.o     ft_putchar.o    ft_putnbrpos.o  ft_strcat.o  \
@@ -21,7 +21,7 @@ OBJECTS	=   ft_atoi.o       ft_isascii.o    ft_memalloc.o   ft_memcpy.o     ft_p
             ft_strnew.o     ft_strstr.o     ft_toupper.o    ft_lstdelone.o  ft_lstnew.o     ft_lstdel.o		ft_lstadd.o  \
 			ft_lstiter.o    ft_lstmap.o   	ft_printf.o		flag_int.o		parsers.o		ft_write.o		ft_putnstr.o\
 			ft_flagstr.o	ft_flagpercent.o				ft_flagchar.o	flag_unsignedint.o							\
-			ft_putunsignednbr.o				ft_swap.o		flag_o.o		ft_max.o		ft_intlen.o		ft_flagf.o			\
+			ft_putunsignednbr.o				ft_swap.o		flag_o.o		ft_max.o		ft_intlen.o					\
 			ft_unsignedintlen.o				ft_itoabase.o	ft_reverse.o	ft_putupstr.o	ft_flagx.o
 
 HEADER = libft.h

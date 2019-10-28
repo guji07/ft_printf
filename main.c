@@ -3,113 +3,16 @@
 //all p,i,s,d,u,c
 int main(void)
 {
-	/*printf("[%i]\n", -2222123);
-	ft_printf("[%i]\n", -2222123);
-	printf("[%1.11i]\n", -3333);
-	ft_printf("[%1.11i]\n", -3333);
-	printf("[%0.7i]\n", -3333);
-	ft_printf("[%0.7i]\n", -3333);
-	printf("[%i]\n", -4444);
-	ft_printf("[%i]\n", -4444);
-	printf("[%i]\n", 6666);
-	ft_printf("[%i]\n", 6666);
-	printf("[%+i]\n", 5555);
-	ft_printf("[%+i]\n", 5555);
-	printf("[%+0.1i]\n", -7777);
-	ft_printf("[%+0.1i]\n", -7777);
-	printf("[%+0.1i]\n", +7777);
-	ft_printf("[%+0.1i]\n", +7777);
-	printf("[%+0.1i]\n", -7777);
-	ft_printf("[%+0.1i]\n", -7777);
-	printf("[%0.3ss is a string]\n", "this");
-	ft_printf("[%0.3ss is a string]\n", "this");
-	printf("[%- 12.5i]\n", 456);
-	ft_printf("[%- 12.5i]\n", 456);
-	printf("[%-8.5i]\n", -123);
-	ft_printf("[%-8.5i]\n", -123);
-	printf("[%-8.15i]\n", -123);
-	ft_printf("[%-8.15i]\n", -123);
-	printf("[%1.11i]\n", 0);
-	ft_printf("[%1.11i]\n", 0);
-	long int i = -500000;
-	printf("[%li]\n", i);
-	ft_printf("[%li]\n", i);
-	printf("[% +d]\n", 42);
-	ft_printf("[% +d]\n", 42);
-	printf("[%hd]\n", 32768);
-	ft_printf("[%hd]\n", 32768);
-	printf("[%lld]\n", -9223372036854775808);
-	ft_printf("[%lld]\n", -9223372036854775808);
-	printf("[% 10.5d]\n", 4242);
-	ft_printf("[% 10.5d]\n", 4242);
-	printf("[%03.2d]\n", 5);
-	ft_printf("[%03.2d]\n", 5);
-	printf("[%03.2d]\n", 0);
-	ft_printf("[%03.2d]\n", 0);
-	printf("[@moulitest: %.d %.0d]\n", 0, 0);
-	ft_printf("[@moulitest: %.d %.0d]\n", 0, 0);
-	printf("[@moulitest: %5.d %5.0d]\n", 0, 0);
-	ft_printf("[@moulitest: %5.d %5.0d]\n", 0, 0);*/
-	//unsigned ints:
-	/*printf("[% u]\n", 4294967295u);
-	ft_printf("[% u]\n", 4294967295);
-	printf("[%-15u]\n", 4294967295u);
-	ft_printf("[%-15u]\n", 4294967295);
-	printf("[%u]\n", 4294967295u);
-	ft_printf("[%+u]\n", 4294967295u);*/
-	/*printf("[%#6o]\n", 2500);
-	ft_printf("[%#6o]\n", 2500);
-	printf("[%x]\n", -42);
-	ft_printf("[%x]\n", -42);
-	printf("[%x]\n", 42);
-	ft_printf("[%x]\n", 42);
-	printf("[%o]\n", 123);
-	ft_printf("[%o]\n", 123);
-	printf("[%lo]\n", 123l);
-	ft_printf("[%lo]\n", 123l);
-	printf("[%o]\n", -123);
-	//ft_printf("[%lo]\n", -123l);
-	//printf("[%3.2o]\n", 123);
-	//ft_printf("[%3.2o]\n", 123);
-	//printf("[%-5.10lo]\n", 123l);
-	//ft_printf("[%-5.10lo]\n", 123l);
+	//printf("[%x]\n", -42);
+	//ft_printf("[%x]\n", -42);
+	//printf("[%x]\n", 42);
+	//ft_printf("[%x]\n", 42);
 	printf("[%x]\n", 53125);
-	ft_printf("[%x]\n", 53125);*/
-	/*int i = 123132;
-	printf("%20p\n", &i);
-	ft_printf("%20p", &i);
+	ft_printf("[%x]\n", 53125);
 	printf("[%x]\n", -42);
 	ft_printf("[%x]\n", -42);
 	printf("[%#x]\n", 17);
 	ft_printf("[%#x]\n", 17);
-	int i = malloc(1);
-	printf("%p\n", &i);
-	ft_printf("%p\n", &i);
-	//printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
-	//ft_printf("@moulitest: [%#.o] [%#.0o]\n", 0, 0);
-	printf("{%0-3d}\n", 0);
-	ft_printf("{%0-3d}", 0);
-	printf("[% .5i]\n", 2);
-	ft_printf("[% .5i]\n", 2);
-	printf("% +-8.5i]\n", 34);
-	ft_printf("% +-8.5i]\n", 34);
-	printf("[% -7i]\n", -14);
-	ft_printf("[% -7i]\n", -14);
-	printf("[%-5.0i]\n", 0);
-	ft_printf("[%-5.0i]\n", 0);
-	int i_pos_1 = 878023;
-	int sh_pos_1 = 3047;
-	printf("[%d] [%hd]", i_pos_1, sh_pos_1);
-	printf("[%-5.0u]\n", 0);
-	ft_printf("[%-5.0u]\n", 0);*/
-	//done: c, s, p, d, i, u
-	//need to do: x,X,o,f
-	/*printf("this %#o number]\n", 1);
-	ft_printf("this %#o number]\n", 1);
-	printf("this %#.o number]\n", 2);
-	ft_printf("this %#.o number]\n", 2);
-	printf("%#2o\n", 94827);
-	ft_printf("%#2o", 94827);*/
-	printf("%#-3o]\n", 0);
-	ft_printf("%#-3o]\n", 0);
+	printf("[%-#10.1x]\n", 1);
+	ft_printf("[%-#10.1x]\n", 1);
 }

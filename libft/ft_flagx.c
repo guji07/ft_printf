@@ -2,77 +2,58 @@
 
 void				ft_xtetleft(char *str, t_format form, int mode)
 {
+	int 	precision;
+	int 	len;
 	int 	width;
-	int 	max;
 
-	width = 0;
-	if (HASHTAG && !ft_strequ("0", str))
-		width += 2;
-	if (mode == 3)
-		width += 2;
-	max = ft_max(form.precision, ft_strlen(str));
-	if (form.width < max)
-		form.width = max;
-	while (width++ < form.precision - (int)ft_strlen(str) + PLUS)
-		ft_write("0", 1);
-	if (mode == 2)
-		ft_putupstr(str);
-	else if (mode == 1)
-		ft_putstr(str);
-	else if (mode == 3 && (form.precision  || str[0] != '0'))
+	len = ft_strlen(str);
+	precision = ft_max(form.precision, len);
+	width = form.width - precision;
+	if (HASHTAG)
 	{
-		ft_putstr("0x");
-		ft_putstr(str);
+		ft_putstr(mode == 2 ? "0X" : "0x");
+		width -= 2;
 	}
-	while ((width < form.width - (int)ft_strlen(str) + !SPACE))
+	while (precision - len)
+	{
+		precision--;
+		ft_write("0", 1);
+	}
+	ft_putstr(str);
+	while (width > 0)
 	{
 		ft_write(" ", 1);
-		width++;
+		width--;
 	}
 }
 
 void				ft_xtetright(char *str, t_format form, int mode)
 {
 	int 	width;
-	int 	max;
+	int 	precision;
 	int 	len;
 
-	width = 0;
-	if (HASHTAG && !ft_strequ("0", str))
-		width += 2;
-	if (mode == 3)
-		width += 2;
 	len = ft_strlen(str);
-	if (!form.precision && str[0] == '0')
-		len = 0;
-	max = ft_max(form.precision, len);
-	if (form.width < max)
-		form.width = max;
-	while ((width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
+	precision = ft_max(form.precision, len);
+	width = form.width - precision;
+	if (HASHTAG)
+		width -= 2;
+	while (width > 0)
 	{
 		ft_write(" ", 1);
-		width++;
-	}
-	if (form.precision == 0 && str[0] == '0' && str[1] == '\0' && !ft_strequ("0", str))
-	{
-		ft_write(" ", 1);
-		return ;
-	}
-	if (HASHTAG && !ft_strequ("0", str))
-		ft_putstr(mode == 2 ? "0X" : "0x");
-	if (form.precision >= form.width && (PLUS))
 		width--;
-	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
-		ft_write("0", 1);
-	if (mode == 2 && (form.precision  || str[0] != '0'))
-		ft_putupstr(str);
-	else if (mode == 1 && (form.precision  || str[0] != '0'))
-		ft_putstr(str);
-	else if (mode == 3 && (form.precision  || str[0] != '0'))
-	{
-		ft_putstr("0x");
-		ft_putstr(str);
 	}
+	if (HASHTAG)
+		ft_putstr(mode == 2 ? "0X" : "0x");
+	while (precision - len)
+	{
+		precision--;
+		ft_write("0", 1);
+	}
+	if (mode == 2)
+		ft_putupstr(str);
+	else
+		ft_putstr(str);
 }
 
 void		ft_flagxtet(unsigned long long num, char *ss, int mode)
@@ -85,10 +66,10 @@ void		ft_flagxtet(unsigned long long num, char *ss, int mode)
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
 	ft_itoabaseunsigned(num, str, 16);
-	if (!MINUS)
-		ft_xtetright(str, form, mode);
-	else
+	if (MINUS)
 		ft_xtetleft(str, form, mode);
+	else
+		ft_xtetright(str, form, mode);
 	free(str);
 	free(form.flag);
 }

@@ -17,7 +17,7 @@ int				ft_format(char *ss, va_list ap)
 		else if (type == 50)
 			ft_octet(ss, ap);
 		else if (type == 60)
-            ft_xtet(ss, ap, 3);
+            ft_ptet(ss, ap);
 		else if (type == 70)
 			ft_xtet(ss, ap, 1);
 		else if (type == 80)
