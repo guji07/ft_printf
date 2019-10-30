@@ -19,20 +19,25 @@ int 		ft_doublelen(double num)
 
 void		ft_double(char *ss, double num)
 {
-	char		*s;
+	char		*buf;
 	t_format	form;
 	int 		size;
 
 	size = 0;
-	form.precision = ft_parse_precision(ss);
-	s = (char*)malloc(ft_doublelen(num) + form.precision + 2);
-	printf("%s", s);
-	while ((num) > 18446744073709551615.0)
+	while (num > 1)
 	{
-		size++;
-		num /= 10;
+		buf = (char*)malloc(21);
+		while ((num) > 18446744073709551615.0)
+		{
+			size++;
+			num /= 10;
+		}
+		ft_itoabaseunsigned((unsigned long long)num, buf, 10);
+		num = num - ((size_t)num);
+		num *= ft_pow(10, size > 20 ? 20 : size);
+		printf("%s\n", buf);
+		free(buf);
 	}
-	ft_itoabaseunsigned((unsigned long long)num, s, 10);
 }
 
 void		ft_float(char *ss, va_list ap)
