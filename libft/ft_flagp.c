@@ -11,9 +11,9 @@ void				ft_ptetleft(char *str, t_format form)
 		form.width = max;
 	while (width++ < form.precision - (int)ft_strlen(str) + PLUS)
 		ft_write("0", 1);
-	if (form.precision  || str[0] != '0')
+	ft_putstr("0x");
+	if (str[0] != '0')
 	{
-		ft_putstr("0x");
 		ft_putstr(str);
 	}
 	while ((width < form.width - (int)ft_strlen(str) + !SPACE))
@@ -50,9 +50,9 @@ void				ft_ptetright(char *str, t_format form)
 		width--;
 	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
 		ft_write("0", 1);
-	if (form.precision  || str[0] != '0')
+	ft_putstr("0x");
+	if (str[0] != '0' || form.precision == 1)
 	{
-		ft_putstr("0x");
 		ft_putstr(str);
 	}
 }
@@ -67,6 +67,8 @@ void		ft_flagptet(unsigned long long num, char *ss)
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
 	ft_itoabaseunsigned(num, str, 16);
+	if (!ft_checkzero(ss))
+		form.precision = 1;
 	if (!MINUS)
 		ft_ptetright(str, form);
 	else

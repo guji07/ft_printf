@@ -148,7 +148,7 @@ int					*ft_parse_flag(int num, char *ss);
 int 				ft_parse_width(char *ss);
 int 				ft_parse_precision(char *ss);
 int 				ft_parse_size(char *ss);
-
+int 				ft_checkzero(char *ss);
 /*
  * int handlers
  */

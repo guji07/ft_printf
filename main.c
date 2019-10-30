@@ -3,6 +3,6 @@
 //all c s p x X i d o(-3)
 int main(void)
 {
-	printf("%-5X]\n", 52625);
-	ft_printf("%-5X]\n", 52625);
+	printf("%.5p]\n", 0);
+	ft_printf("%.5p", 0);
 }

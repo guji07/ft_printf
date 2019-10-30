@@ -119,7 +119,6 @@ int 		ft_checkzero(char *ss)
 	else
 		flag = 0;
 	return (flag);
-
 }
 
 void		ft_flagxtet(unsigned long long num, char *ss, int mode)
