@@ -45,7 +45,7 @@ void				ft_xtetleft(char *str, t_format form, int mode)
 	len = ft_strlen(str);
 	precision = ft_max(form.precision, len);
 	width = form.width - precision;
-	if (HASHTAG)
+	if (HASHTAG && str[0] != '0')
 	{
 		ft_putstr(mode == 2 ? "0X" : "0x");
 		width -= 2;
@@ -55,7 +55,10 @@ void				ft_xtetleft(char *str, t_format form, int mode)
 		precision--;
 		ft_write("0", 1);
 	}
-	ft_putstr(str);
+	if (mode == 1)
+		ft_putstr(str);
+	else
+		ft_putupstr(str);
 	while (width > 0)
 	{
 		ft_write(" ", 1);
@@ -72,15 +75,19 @@ void				ft_xtetright(char *str, t_format form, int mode)
 	len = ft_strlen(str);
 	precision = ft_max(form.precision, len);
 	width = form.width - precision;
-	if (HASHTAG)
+	if (HASHTAG && str[0] != '0')
 		width -= 2;
+	if ((ZERO && form.precision == -1))
+		if (HASHTAG && str[0] != '0')
+			ft_putstr(mode == 2 ? "0X" : "0x");
 	while (width > 0)
 	{
-		ft_write(" ", 1);
+		ft_write((ZERO && form.precision == -1) ? "0" : " ", 1);
 		width--;
 	}
-	if (HASHTAG)
-		ft_putstr(mode == 2 ? "0X" : "0x");
+	if (!(ZERO && form.precision == -1))
+		if (HASHTAG && str[0] != '0')
+			ft_putstr(mode == 2 ? "0X" : "0x");
 	while (precision - len)
 	{
 		precision--;
@@ -90,6 +97,29 @@ void				ft_xtetright(char *str, t_format form, int mode)
 		ft_putupstr(str);
 	else
 		ft_putstr(str);
+}
+
+int 		ft_checkzero(char *ss)
+{
+	int 	i;
+	int 	len;
+	int 	flag;
+
+	i = 0;
+	flag = 0;
+	len = ft_len_to_type(ss);
+	while (ss[i] && ss[i] != '.' && i < len)
+		i++;
+	if (ss[i] == '.')
+		i++;
+	else
+		return (flag);
+	if ((ss[i] == '0' || (ss[i] > '9' || ss[i] <= '0')))
+		flag = 1;
+	else
+		flag = 0;
+	return (flag);
+
 }
 
 void		ft_flagxtet(unsigned long long num, char *ss, int mode)
@@ -102,7 +132,7 @@ void		ft_flagxtet(unsigned long long num, char *ss, int mode)
 	form.width = ft_parse_width(ss);
 	form.precision = ft_parse_precision(ss);
 	ft_itoabaseunsigned(num, str, 16);
-	if (str[0] == '0' && form.precision <= 0)
+	if (str[0] == '0' && ft_checkzero(ss))
 	{
 		if (!MINUS)
 			ft_costylright(form);
