@@ -28,7 +28,6 @@
 #define hh 2
 #define l 3
 #define ll 4
-#define Lf 5
 
 typedef	struct		s_list
 {
@@ -123,6 +122,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f) (t_list *elem));
 void				ft_lstiter(t_list *lst, void (*f)(t_list
 *elem));
 
+long double			ft_pow(long double num, int power);
 void 				ft_write(char *s, int len);
 void 				ft_putnstr(char *str, size_t n);
 int					ft_module(int a);
@@ -189,6 +189,13 @@ void				ft_flagoctet(unsigned long long num, char *ss);
 void				ft_xtet(char *ss, va_list ap, int mode);
 /*
  * floats handlers
+ */
+
+void				ft_float(char *ss, va_list ap);
+int 				ft_doublelen(double num);
+
+/*
+ * pointers
  */
 void				ft_ptet(char *ss, va_list ap);
 #endif

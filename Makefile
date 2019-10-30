@@ -1,5 +1,5 @@
 SRCS =   main.c
-
+FLAGS = -Wall -Wextra -Werror
 NAME = test
 all: $(NAME)
 $(NAME):$(OBJECTS)

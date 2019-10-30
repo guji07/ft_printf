@@ -23,7 +23,7 @@ int				ft_format(char *ss, va_list ap)
 		else if (type == 80)
 			ft_xtet(ss, ap, 2);
 		else if (type == 90)
-			return (0);
+			ft_float(ss, ap);
 		else if (type == 100)
 			ft_flagpercent(ss);
 	}
