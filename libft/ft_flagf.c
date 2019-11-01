@@ -1,19 +1,17 @@
 #include "libft.h"
 
-void		ft_longdouble(char *ss, long double num)
-{
-	ss = NULL;
-	num = 0;
-
-	return ;
-}
-
 void		ft_putfloatleft(char *ss, char *num, t_format form)
 {
 	int 			width;
 
 	form.width = ft_parse_width(ss);
 	width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
+	if (SPACE && !PLUS && num[0] != '-')
+	{
+		ft_putchar(' ');
+		if (width > form.precision)
+			width--;
+	}
 	if (PLUS && num[0] != '-')
 	{
 		ft_putchar('+');
@@ -25,12 +23,6 @@ void		ft_putfloatleft(char *ss, char *num, t_format form)
 		ft_putchar('.');
 		width--;
 	}
-	if (SPACE)
-	{
-		ft_putchar(' ');
-		if (width > form.precision)
-			width--;
-	}
 	while (width-- > 0)
 		ft_putchar(' ');
 }
@@ -40,6 +32,12 @@ void		ft_putfloatright(char *ss, char *num, t_format form)
 	int 			width;
 
 	form.width = ft_parse_width(ss);
+	if (SPACE && !PLUS && num[0] != '-')
+	{
+		ft_putchar(' ');
+		if (form.width > form.precision)
+			form.width--;
+	}
 	if ((PLUS || num[0] == '-') && ZERO)
 	{
 		ft_putchar(num[0] == '-' ? '-' : '+');
@@ -49,12 +47,6 @@ void		ft_putfloatright(char *ss, char *num, t_format form)
 	}
 	else
 		width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
-	if (SPACE && !PLUS && width != 0)
-	{
-		ft_putchar(' ');
-		if (width > form.precision)
-			width--;
-	}
 	if (HASHTAG)
 		width--;
 	while (width-- > 0 + (PLUS && !ZERO && num[0] != '-'))
@@ -70,7 +62,7 @@ void		ft_putfloatright(char *ss, char *num, t_format form)
 		ft_putchar('.');
 }
 
-void				ft_okrug2(char *ss, char *buf, t_format form, double num)
+void				ft_okrug2(char *buf, t_format form, double num)
 {
 	int 	i;
 	int 	len;
@@ -88,7 +80,7 @@ void				ft_okrug2(char *ss, char *buf, t_format form, double num)
 		i++;
 	else
 		return ;
-	while (j < form.precision)
+	while (j < form.precision - 1)
 		j++;
 	i += j;
 	if (buf[i] > '5' && buf[i] < '9')
@@ -104,9 +96,9 @@ void				ft_okrug2(char *ss, char *buf, t_format form, double num)
 	}
 }
 
-long double 		ft_okrug(int i)
+double 		ft_okrug(int i)
 {
-	long double		k;
+	double		k;
 
 	k = 0.5;
 	while (i-- > 0)
@@ -114,7 +106,7 @@ long double 		ft_okrug(int i)
 	return (k);
 }
 
-void		ft_double(char *ss, double num)
+void		ft_double(char *ss, long double num)
 {
 	char		*buf;
 	t_format	form;
@@ -132,7 +124,7 @@ void		ft_double(char *ss, double num)
 	}
 	else
 	{
-		num += (double)ft_okrug(form.precision);
+		num += ft_okrug(form.precision);
 		ft_itoabaseunsigned((unsigned long long) num, buf, 10);
 	}
 	num = num - ((size_t) num);
@@ -147,7 +139,8 @@ void		ft_double(char *ss, double num)
 		free(buf);
 		buf = ft_strjoin(buf, c);
 	}
-	ft_okrug2(ss, buf, form, num);
+	form.precision = ft_parse_precision(ss) >= 0 ? ft_parse_precision(ss) : 6;
+	//ft_okrug2(buf, form, num);
 	if (!MINUS)
 		ft_putfloatright(ss, buf, form);
 	else
@@ -162,7 +155,7 @@ void		ft_float(char *ss, va_list ap)
 
 	size = ft_parse_size(ss);
 	if (size == 5)
-		ft_longdouble(ss, va_arg(ap, long double));
+		ft_double(ss, va_arg(ap, long double));
 	else
 		ft_double(ss, va_arg(ap, double));
 }

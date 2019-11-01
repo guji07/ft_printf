@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flagchar.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/01 21:15:13 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/01 21:16:00 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void		ft_flagchar(char *ss, char c)
+void			ft_flagchar(char *ss, char c)
 {
 	t_format	form;
-	int 		i;
+	int			i;
 
 	i = 0;
 	form.width = ft_parse_width(ss);

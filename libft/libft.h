@@ -192,7 +192,7 @@ void				ft_xtet(char *ss, va_list ap, int mode);
  */
 
 void				ft_float(char *ss, va_list ap);
-int 				ft_doublelen(double num);
+int 				ft_doublelen(long double num);
 
 /*
  * pointers

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flagp.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/01 21:21:57 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/01 21:34:05 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void				ft_ptetleft(char *str, t_format form)
+void				ft_ptetleft(char *str, t_format form, char *ss)
 {
-	int 	width;
-	int 	max;
+	int						width;
+	int						max;
 
 	width = 2;
 	max = ft_max(form.precision, ft_strlen(str));
@@ -12,10 +24,8 @@ void				ft_ptetleft(char *str, t_format form)
 	while (width++ < form.precision - (int)ft_strlen(str) + PLUS)
 		ft_write("0", 1);
 	ft_putstr("0x");
-	if (str[0] != '0')
-	{
+	if (str[0] != '0' || ft_parse_precision(ss) == -1)
 		ft_putstr(str);
-	}
 	while ((width < form.width - (int)ft_strlen(str) + !SPACE))
 	{
 		ft_write(" ", 1);
@@ -25,9 +35,9 @@ void				ft_ptetleft(char *str, t_format form)
 
 void				ft_ptetright(char *str, t_format form)
 {
-	int 	width;
-	int 	max;
-	int 	len;
+	int						width;
+	int						max;
+	int						len;
 
 	width = 2;
 	len = ft_strlen(str);
@@ -41,26 +51,26 @@ void				ft_ptetright(char *str, t_format form)
 		ft_write(" ", 1);
 		width++;
 	}
-	if (form.precision == 0 && str[0] == '0' && str[1] == '\0' && !ft_strequ("0", str))
+	if (form.precision == 0 && str[0] == '0'
+			&& str[1] == '\0' && !ft_strequ("0", str))
 	{
 		ft_write(" ", 1);
 		return ;
 	}
 	if (form.precision >= form.width && (PLUS))
 		width--;
-	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
+	while ((width++ < form.width - len)
+			&& (form.precision > len || (ZERO && form.precision == -1)))
 		ft_write("0", 1);
 	ft_putstr("0x");
 	if (str[0] != '0' || form.precision == 1)
-	{
 		ft_putstr(str);
-	}
 }
 
-void		ft_flagptet(unsigned long long num, char *ss)
+void				ft_flagptet(unsigned long long num, char *ss)
 {
-	t_format	form;
-	char		*str;
+	t_format				form;
+	char					*str;
 
 	str = (char*)ft_memalloc(21);
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
@@ -72,21 +82,21 @@ void		ft_flagptet(unsigned long long num, char *ss)
 	if (!MINUS)
 		ft_ptetright(str, form);
 	else
-		ft_ptetleft(str, form);
+		ft_ptetleft(str, form, ss);
 	free(str);
 	free(form.flag);
 }
 
-void		ft_ptet(char *ss, va_list ap)
+void				ft_ptet(char *ss, va_list ap)
 {
-	int				size;
-	unsigned long long int 	num;
+	int						size;
+	unsigned long long int	num;
 
 	size = ft_parse_size(ss);
 	if (size == h)
 	{
 		num = va_arg(ap, unsigned int);
-		ft_flagptet((unsigned short int) num, ss);
+		ft_flagptet((unsigned short int)num, ss);
 	}
 	else if (size == hh)
 	{

@@ -63,10 +63,9 @@ void				ft_writezeros(char *str, t_format form)
 	int 	i;
 
 	i = 0;
-	//form.width = ft_max(ft_strlen(str), form.width);
 	if (!MINUS)
 	{
-		while (i < form.width - ft_max(form.precision, ft_strlen(str)))
+		while (i < form.width - ft_max(form.precision, str[0] == '0' ? 0 : ft_strlen(str)))
 		{
 			ft_write(" ", 1);
 			i++;

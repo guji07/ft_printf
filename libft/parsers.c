@@ -3,9 +3,11 @@
 int 		ft_parse_size(char *ss)
 {
 	int 	i;
+	int 	n;
 
+	n = ft_len_to_type(ss);
 	i = 0;
-	while (ss[i] && ss[i] != 'i' && ss[i] != 'd')
+	while (ss[i] && i < n)
 	{
 		if (ss[i] == 'h')
 		{
