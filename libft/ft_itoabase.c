@@ -6,7 +6,7 @@
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 21:17:17 by tgarkbit          #+#    #+#             */
-/*   Updated: 2019/11/01 21:20:33 by tgarkbit         ###   ########.fr       */
+/*   Updated: 2019/11/01 22:16:54 by tgarkbit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_itoabaseunsigned(unsigned long long num, char *str, int base)
 
 char				*ft_itoabase(long long num, char* str, int base)
 {
-	int i 
+	int i; 
 	int	flag;
 	
 	i = 0;

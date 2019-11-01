@@ -53,29 +53,13 @@ void		ft_intleft(long long num, t_format form)
 	}
 }
 
-int			ft_k1(int *width, int *max, long long *num, t_format *form)
-{
-	int 	len;
-
-	len = ft_intlen(*num);
-	if (!form.precision && *num == 0)
-		*len = 0;
-	if (SPACE && !PLUS && *num >= 0)
-	{
-		ft_write(" ", 1);
-		form.width--;
-	}
-	*max = ft_max(form.precision, len);
-	*width = 0;
-	return (len);
-}
 void		ft_intright(long long num, t_format form)
 {
 	int		width;
 	int		max;
 	int		len;
 
-	/*len = ft_intlen(num);
+	len = ft_intlen(num);
 	if (!form.precision && num == 0)
 		len = 0;
 	if (SPACE && !PLUS && num >= 0)
@@ -84,8 +68,7 @@ void		ft_intright(long long num, t_format form)
 		form.width--;
 	}
 	max = ft_max(form.precision, len);
-	width = 0;*/
-	len = ft_k1(&width, &max, &num, &form);
+	width = 0;
 	if (form.width < max)
 		form.width = max;
 	while ((width < form.width - max -

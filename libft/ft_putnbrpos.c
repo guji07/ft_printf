@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbrpos.c                                        :+:      :+:    :+:   */
+/*   ft_putnbrpos.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:39:02 by tgarkbit          #+#    #+#             */
-/*   Updated: 2019/09/04 14:25:52 by tgarkbit         ###   ########.fr       */
+/*   Updated: 2019/11/01 22:19:20 by tgarkbit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static		int		ft_whtnbr(long long num)
 {
-	int		i;
-	unsigned long long k;
+	int					i;
+	unsigned long long	k;
 
 	k = -9223372036854775808U;
 	i = 0;
@@ -49,9 +49,9 @@ static		void	ft_screen(long long nb)
 	}
 }
 
-void			ft_putnbrpos(long long nb)
+void				ft_putnbrpos(long long nb)
 {
-	int 	flag;
+	int		flag;
 
 	flag = ft_whtnbr(nb);
 	if (flag == 0)
