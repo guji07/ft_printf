@@ -2,42 +2,158 @@
 
 void		ft_longdouble(char *ss, long double num)
 {
+	ss = NULL;
+	num = 0;
+
 	return ;
 }
 
-int 		ft_doublelen(double num)
+void		ft_putfloatleft(char *ss, char *num, t_format form)
+{
+	int 			width;
+
+	form.width = ft_parse_width(ss);
+	width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
+	if (PLUS && num[0] != '-')
+	{
+		ft_putchar('+');
+		width--;
+	}
+	ft_putstr(num);
+	if (HASHTAG && ft_parse_precision(ss) == 0)
+	{
+		ft_putchar('.');
+		width--;
+	}
+	if (SPACE)
+	{
+		ft_putchar(' ');
+		if (width > form.precision)
+			width--;
+	}
+	while (width-- > 0)
+		ft_putchar(' ');
+}
+
+void		ft_putfloatright(char *ss, char *num, t_format form)
+{
+	int 			width;
+
+	form.width = ft_parse_width(ss);
+	if ((PLUS || num[0] == '-') && ZERO)
+	{
+		ft_putchar(num[0] == '-' ? '-' : '+');
+		if (num[0] == '-')
+			num += 1;
+		width = (int)(form.width > (int)ft_strlen(num) + 1 ? form.width - ft_strlen(num) - 1 : 0);
+	}
+	else
+		width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
+	if (SPACE && !PLUS && width != 0)
+	{
+		ft_putchar(' ');
+		if (width > form.precision)
+			width--;
+	}
+	if (HASHTAG)
+		width--;
+	while (width-- > 0 + (PLUS && !ZERO && num[0] != '-'))
+		ft_putchar(ZERO ? '0' : ' ');
+	if ((PLUS || num[0] == '-') && !ZERO)
+	{
+		ft_putchar(num[0] == '-' ? '-' : '+');
+		if (num[0] == '-')
+			num += 1;
+	}
+	ft_putstr(num);
+	if (HASHTAG && ft_parse_precision(ss) == 0)
+		ft_putchar('.');
+}
+
+void				ft_okrug2(char *ss, char *buf, t_format form, double num)
 {
 	int 	i;
+	int 	len;
+	int 	c;
+	int 	j;
 
-	i = 1;
-	if (num < 1)
-		return (i);
-	while ((num /= 10) >= 1)
+	j = 0;
+	num *= 10;
+	c = (char)(((size_t)num % 10) + '0');
+	i = 0;
+	len = ft_strlen(buf);
+	while (i < len && buf[i] != '.')
 		i++;
-	return (i);
+	if (buf[i] == '.')
+		i++;
+	else
+		return ;
+	while (j < form.precision)
+		j++;
+	i += j;
+	if (buf[i] > '5' && buf[i] < '9')
+	{
+		if (c > '0' && c <= '9')
+			buf[i]++;
+	}
+	else if (buf[i] == '9' && c > '0' && c <= '9')
+	{
+		buf[i] = '0';
+		if (buf[i - 1] != '.')
+			buf[i - 1]++;
+	}
+}
+
+long double 		ft_okrug(int i)
+{
+	long double		k;
+
+	k = 0.5;
+	while (i-- > 0)
+		k *= 0.1;
+	return (k);
 }
 
 void		ft_double(char *ss, double num)
 {
 	char		*buf;
 	t_format	form;
-	int 		size;
+	char		c[2];
 
-	size = 0;
-	while (num > 1)
+	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
+	form.precision = ft_parse_precision(ss) >= 0 ? ft_parse_precision(ss) : 6;
+	buf = (char*)malloc(23);
+	if (num < 0)
 	{
-		buf = (char*)malloc(21);
-		while ((num) > 18446744073709551615.0)
-		{
-			size++;
-			num /= 10;
-		}
-		ft_itoabaseunsigned((unsigned long long)num, buf, 10);
-		num = num - ((size_t)num);
-		num *= ft_pow(10, size > 20 ? 20 : size);
-		printf("%s\n", buf);
-		free(buf);
+		num *= -1;
+		buf[0] = '-';
+		num += (double)ft_okrug(form.precision);
+		ft_itoabaseunsigned((unsigned long long) num, buf + 1, 10);
 	}
+	else
+	{
+		num += (double)ft_okrug(form.precision);
+		ft_itoabaseunsigned((unsigned long long) num, buf, 10);
+	}
+	num = num - ((size_t) num);
+	if (form.precision)
+		buf[ft_strlen(buf)] = '.';
+	while (form.precision-- > 0)
+	{
+		num *= 10;
+		*c = (char)(((size_t)num % 10) + '0');
+		num = num - (double)((size_t)num * 10 / 10);
+		*(c + 1) = '\0';
+		free(buf);
+		buf = ft_strjoin(buf, c);
+	}
+	ft_okrug2(ss, buf, form, num);
+	if (!MINUS)
+		ft_putfloatright(ss, buf, form);
+	else
+		ft_putfloatleft(ss, buf, form);
+	free(buf);
+	free(form.flag);
 }
 
 void		ft_float(char *ss, va_list ap)

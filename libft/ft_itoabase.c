@@ -2,9 +2,9 @@
 
 char				*ft_itoabaseunsigned(unsigned long long num, char* str, int base)
 {
-	int i = 0;
-	int	flag = 0;
+	int i;
 
+	i = 0;
 	if (num == 0)
 	{
 		str[i++] = '0';
@@ -14,11 +14,9 @@ char				*ft_itoabaseunsigned(unsigned long long num, char* str, int base)
 	while (num != 0)
 	{
 		int rem = num % base;
-		str[i++] = (rem > 9 ? (rem-10) + 'a' : rem + '0');
+		str[i++] = (rem > 9 ? (rem - 10) + 'a' : rem + '0');
 		num = num/base;
 	}
-	if (flag)
-		str[i++] = '-';
 	str[i] = '\0';
 	reverse(str, i);
 	return (str);
