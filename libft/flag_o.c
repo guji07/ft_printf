@@ -34,15 +34,12 @@ void				ft_octetright(char *str, t_format form)
 	int 	max;
 	int 	len;
 
-	len = ft_strlen(str);
+	len = ((!form.precision && str[0] == '0') ? 0 : (int)ft_strlen(str));
 	width = 0;
 	if (HASHTAG && ((!ft_strequ("0", str))) && form.precision < len)
 		width++;
-	if (!form.precision && str[0] == '0')
-		len = 0;
 	max = ft_max(form.precision, len);
-	if (form.width < max)
-		form.width = max;
+	form.width = ft_max(form.width, max);
 	while ((width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
 	{
 		ft_write(" ", 1);

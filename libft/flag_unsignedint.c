@@ -3,34 +3,18 @@
 void		ft_unsignedint(char *ss, va_list ap)
 {
 	int 			size;
-	unsigned	long	long num;
 
 	size = ft_parse_size(ss);
 	if (size == h)
-	{
-		num = va_arg(ap, unsigned int);
-		ft_flagunsignedint((short unsigned int)num, ss);
-	}
+		ft_flagunsignedint((short unsigned int)va_arg(ap, unsigned int), ss);
 	if (size == hh)
-	{
-		num = va_arg(ap, unsigned int);
-		ft_flagunsignedint((unsigned char)num, ss);
-	}
+		ft_flagunsignedint((unsigned char)va_arg(ap, unsigned int), ss);
 	if (size == l)
-	{
-		num = va_arg(ap, unsigned long int);
-		ft_flagunsignedint((unsigned long int)num, ss);
-	}
+		ft_flagunsignedint((unsigned long int)va_arg(ap, unsigned long int), ss);
 	if (size == ll)
-	{
-		num = va_arg(ap, unsigned long long int);
-		ft_flagunsignedint((unsigned long long)num, ss);
-	}
+		ft_flagunsignedint((unsigned long long)va_arg(ap, unsigned long long int), ss);
 	if (size == 0)
-	{
-		num = va_arg(ap, unsigned int);
-		ft_flagunsignedint((unsigned int)num, ss);
-	}
+		ft_flagunsignedint((unsigned int)va_arg(ap, unsigned int), ss);
 }
 
 void		ft_unsignedintleft(unsigned long long num, t_format form)
@@ -65,14 +49,11 @@ void		ft_unsignedintright(unsigned long long num, t_format form)
 	if (!form.precision && num == 0)
 		len = 0;
 	max = ft_max(form.precision, len);
-	width = 0;
+	width = -1;
 	if (form.width < max)
 		form.width = max;
-	while ((width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
-	{
+	while ((++width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
 		ft_write(" ", 1);
-		width++;
-	}
 	if (form.precision >= form.width && (PLUS))
 		width--;
 	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))

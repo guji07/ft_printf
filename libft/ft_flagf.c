@@ -47,8 +47,7 @@ void		ft_putfloatright(char *ss, char *num, t_format form)
 	}
 	else
 		width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
-	if (HASHTAG)
-		width--;
+	width -= (HASHTAG ? 1 : 0);
 	while (width-- > 0 + (PLUS && !ZERO && num[0] != '-'))
 		ft_putchar(ZERO ? '0' : ' ');
 	if ((PLUS || num[0] == '-') && !ZERO)
