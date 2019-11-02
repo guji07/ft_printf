@@ -62,14 +62,11 @@ void				ft_writezeros(char *str, t_format form)
 {
 	int 	i;
 
-	i = 0;
+	i = -1;
 	if (!MINUS)
 	{
-		while (i < form.width - ft_max(form.precision, str[0] == '0' ? 0 : ft_strlen(str)))
-		{
+		while (++i < form.width - ft_max(form.precision, str[0] == '0' ? 0 : ft_strlen(str)))
 			ft_write(" ", 1);
-			i++;
-		}
 		if (HASHTAG)
 			ft_write("0", 1);
 		else if (form.precision != 0)
@@ -81,11 +78,8 @@ void				ft_writezeros(char *str, t_format form)
 			ft_write("0", 1);
 		else if (form.width)
 			ft_write(" ", 1);
-		while (i < form.width - ft_max(form.precision, ft_strlen(str)))
-		{
+		while (++i < form.width - ft_max(form.precision, ft_strlen(str)))
 			ft_write(" ", 1);
-			i++;
-		}
 	}
 }
 
@@ -112,32 +106,16 @@ void				ft_flagoctet(unsigned long long num, char *ss)
 void				ft_octet(char *ss, va_list ap)
 {
 	int							size;
-	unsigned	long	long  	num;
 
 	size = ft_parse_size(ss);
 	if (size == h)
-	{
-		num = va_arg(ap, unsigned int);
-		ft_flagoctet((short unsigned)num, ss);
-	}
+		ft_flagoctet((short unsigned)va_arg(ap, unsigned int), ss);
 	else if (size == hh)
-	{
-		num = va_arg(ap, unsigned int);
-		ft_flagoctet((unsigned char)num, ss);
-	}
+		ft_flagoctet((unsigned char)va_arg(ap, unsigned int), ss);
 	else if (size == l)
-	{
-		num = va_arg(ap, unsigned long int);
-		ft_flagoctet((unsigned long int)num, ss);
-	}
+		ft_flagoctet((unsigned long int)va_arg(ap, unsigned long int), ss);
 	else if (size == ll)
-	{
-		num = va_arg(ap, unsigned long long int);
-		ft_flagoctet(num, ss);
-	}
+		ft_flagoctet(va_arg(ap, unsigned long long int), ss);
 	else if (size == 0)
-	{
-		num = va_arg(ap, unsigned int);
-		ft_flagoctet((unsigned int)num, ss);
-	}
+		ft_flagoctet((unsigned int)va_arg(ap, unsigned int), ss);
 }
