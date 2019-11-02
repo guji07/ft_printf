@@ -10,15 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
-{
-	int trash;
-
-	trash = *a;
-	*a = *b;
-	*b = trash;
-}
-
 void 	ft_memswap(char *s1,char *s2)
 {
 	char s[1];
