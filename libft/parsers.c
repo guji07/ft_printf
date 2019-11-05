@@ -6,26 +6,23 @@ int 		ft_parse_size(char *ss)
 	int 	n;
 
 	n = ft_len_to_type(ss);
-	i = 0;
-	while (ss[i] && i < n)
+	i = -1;
+	while (ss[++i] && i < n)
 	{
 		if (ss[i] == 'h')
 		{
 			if (ss[i + 1] == 'h')
 				return (2);
-			else
-				return (1);
+			return (1);
 		}
 		if (ss[i] == 'l')
 		{
 			if (ss[i + 1] == 'l')
 				return (4);
-			else
-				return (3);
+			return (3);
 		}
 		if (ss[i] == 'L' && ss[i + 1] == 'f')
 			return (5);
-		i++;
 	}
 	return (0);
 }
@@ -50,9 +47,7 @@ int 		ft_parse_width(char *ss)
 
 	i = 1;
 	while ((ss[i] == '0' || ss[i] == '+' || ss[i] == ' ' || ss[i] == '-' || ss[i] == '#') && ss[i])
-	{
 		i++;
-	}
 	if (ss[i] && (ss[i] >= '0' && ss[i] <= '9'))
 		return (ft_atoi(ss + i));
 	return (0);
@@ -91,25 +86,15 @@ int 		ft_len_to_type(char *s)
 	i = 0;
 	while (s[++i])
 	{
-		if (s[i] == 'c')
-			return (i);
-		if (s[i] == 's')
+		if (s[i] == 'c' || s[i] == 's' || s[i] == 'p')
 			return (i);
 		if (s[i] == 'd' || s[i] == 'i')
 			return (i);
-		if (s[i] == 'p')
+		if (s[i] == 'u' || s[i] == 'o')
 			return (i);
-		if (s[i] == 'o')
+		if (s[i] == 'X' || s[i] == 'x')
 			return (i);
-		if (s[i] == 'u')
-			return (i);
-		if (s[i] == 'x')
-			return (i);
-		if (s[i] == 'X')
-			return (i);
-		if (s[i] == 'f')
-			return (i);
-		if (s[i] == '%')
+		if (s[i] == '%' || s[i] == 'f')
 			return (i);
 	}
 	return (0);
