@@ -1,48 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flag_x1.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 16:00:51 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/09/11 10:52:40 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-void				ft_costylleft(t_format form)
-{
-	int 	width;
-	int 	precision;
-
-	precision = form.precision;
-	width = form.width - precision;
-	while (precision > 0)
-	{
-		precision--;
-		ft_write("0", 1);
-	}
-	while (width > 0)
-	{
-		ft_write(" ", 1);
-		width--;
-	}
-}
-
-void				ft_costylright(t_format form)
-{
-	int 	width;
-	int 	precision;
-
-	precision = form.precision;
-	width = form.width - precision;
-	while (width > 0)
-	{
-		ft_write(" ", 1);
-		width--;
-	}
-	while (precision > 0)
-	{
-		precision--;
-		ft_write("0", 1);
-	}
-}
 
 void				ft_xtetleft(char *str, t_format form, int mode)
 {
-	int 	precision;
-	int 	len;
-	int 	width;
+	int		precision;
+	int		len;
+	int		width;
 
 	len = ft_strlen(str);
 	precision = ft_max(form.precision, len);
@@ -67,9 +41,9 @@ void				ft_xtetleft(char *str, t_format form, int mode)
 
 void				ft_xtetright(char *str, t_format form, int mode)
 {
-	int 	width;
-	int 	precision;
-	int 	len;
+	int		width;
+	int		precision;
+	int		len;
 
 	len = ft_strlen(str);
 	precision = ft_max(form.precision, len);
@@ -92,11 +66,11 @@ void				ft_xtetright(char *str, t_format form, int mode)
 		ft_putstr(str);
 }
 
-int 		ft_checkzero(char *ss)
+int 				ft_checkzero(char *ss)
 {
-	int 	i;
-	int 	len;
-	int 	flag;
+	int		i;
+	int		len;
+	int		flag;
 
 	i = 0;
 	flag = 0;
@@ -114,7 +88,7 @@ int 		ft_checkzero(char *ss)
 	return (flag);
 }
 
-void		ft_flagxtet(unsigned long long num, char *ss, int mode)
+void				ft_flagxtet(unsigned long long num, char *ss, int mode)
 {
 	t_format	form;
 	char		*str;
@@ -139,9 +113,9 @@ void		ft_flagxtet(unsigned long long num, char *ss, int mode)
 	free(form.flag);
 }
 
-void		ft_xtet(char *ss, va_list ap, int mode)
+void				ft_xtet(char *ss, va_list ap, int mode)
 {
-	int				size;
+	int		size;
 
 	size = ft_parse_size(ss);
 	if (size == h)

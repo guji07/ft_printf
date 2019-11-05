@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
+
 #define MINUS form.flag[0]
 #define PLUS form.flag[1]
 #define ZERO form.flag[2]
@@ -52,6 +53,7 @@ int					ft_atoi(const char *str);
 void				*ft_memalloc(size_t size);
 int					ft_strequ(char const *s1, char const *s2);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoinfree(char const *s1, char const *s2);
 void				ft_putnbrpos(long long int nb);
 void				ft_putunsignednbrpos(unsigned long long nb);
 void				ft_putchar(char c);
@@ -91,6 +93,8 @@ int					ft_intlen(long long int num);
 void				ft_intleft(long long num, t_format form);
 void				ft_intright(long long num, t_format form);
 
+void				ft_octet(char *ss, va_list ap);
+void				ft_ptet(char *ss, va_list ap);
 void				ft_unsignedint(char *ss, va_list ap);
 void				ft_flagunsignedint(unsigned long long num, char *ss);
 void				ft_unsignedintright(unsigned long long num, t_format form);
@@ -101,17 +105,21 @@ void 				ft_flagstr(char *str, char *ss);
 void 				ft_flagpercent(char *ss);
 void				ft_flagchar(char *ss, char c);
 
-void				ft_octet(char *ss, va_list ap);
-void				ft_flagoctet(unsigned long long num, char *ss);
+void				ft_xtetleft(char *str, t_format form, int mode);
+void				ft_xtetright(char *str, t_format form, int mode);
+void				ft_flagxtet(unsigned long long num, char *ss, int mode);
 void				ft_xtet(char *ss, va_list ap, int mode);
+void				ft_costylleft(t_format form);
+void				ft_costylright(t_format form);
 
 /*
  * floats handlers
  */
-void		ft_double(char *ss, long double num);
-char		*ft_k3(long double *num, t_format form);
-double 		ft_okrug(int i);
-void		ft_putfloatright(char *ss, char *num, t_format form);
-void		ft_k2(t_format form, char *num, char *ss);
-void		ft_putfloatleft(char *ss, char *num, t_format form);
+void				ft_double(char *ss, long double num);
+char				*ft_k3(long double *num, t_format form);
+double 				ft_okrug(int i);
+void				ft_putfloatright(char *ss, char *num, t_format form);
+void				ft_k2(t_format form, char *num, char *ss);
+void				ft_putfloatleft(char *ss, char *num, t_format form);
+void				ft_float(char *ss, va_list ap);
 #endif

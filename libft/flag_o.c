@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*      flag_o.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/05 21:40:13 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/05 21:40:00 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void				ft_octetleft(char *str, t_format form)
@@ -102,7 +114,7 @@ void				ft_flagoctet(unsigned long long num, char *ss)
 
 void				ft_octet(char *ss, va_list ap)
 {
-	int							size;
+	int			size;
 
 	size = ft_parse_size(ss);
 	if (size == h)

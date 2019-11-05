@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putupstr.c                                      :+:      :+:    :+:   */
+/*   flag_x2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,40 @@
 
 #include "libft.h"
 
-void		ft_putupstr(char *s)
+void				ft_costylleft(t_format form)
 {
-	int 	i;
+	int		width;
+	int		precision;
 
-	i = 0;
-	while (s[i])
+	precision = form.precision;
+	width = form.width - precision;
+	while (precision > 0)
 	{
-		if (s[i] >= 'a' && s[i] <= 'z')
-			ft_putchar(s[i] - 32);
-		else
-			ft_write(s + i, 1);
-		i++;
+		precision--;
+		ft_write("0", 1);
+	}
+	while (width > 0)
+	{
+		ft_write(" ", 1);
+		width--;
+	}
+}
+
+void				ft_costylright(t_format form)
+{
+	int		width;
+	int		precision;
+
+	precision = form.precision;
+	width = form.width - precision;
+	while (width > 0)
+	{
+		ft_write(" ", 1);
+		width--;
+	}
+	while (precision > 0)
+	{
+		precision--;
+		ft_write("0", 1);
 	}
 }

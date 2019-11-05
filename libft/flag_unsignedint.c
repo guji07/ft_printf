@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flag_unsignedint.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/08 16:00:51 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/09/11 10:52:40 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void		ft_unsignedint(char *ss, va_list ap)
 {
-	int 			size;
+	int		size;
 
 	size = ft_parse_size(ss);
 	if (size == h)
@@ -19,8 +31,8 @@ void		ft_unsignedint(char *ss, va_list ap)
 
 void		ft_unsignedintleft(unsigned long long num, t_format form)
 {
-	int 	width;
-	int 	max;
+	int		width;
+	int		max;
 
 	max = ft_max(form.precision, ft_unsignedintlen(num));
 	width = 0;
@@ -41,9 +53,9 @@ void		ft_unsignedintleft(unsigned long long num, t_format form)
 
 void		ft_unsignedintright(unsigned long long num, t_format form)
 {
-	int 	width;
-	int 	max;
-	int 	len;
+	int		width;
+	int		max;
+	int		len;
 
 	len = ft_unsignedintlen(num);
 	if (!form.precision && num == 0)
@@ -64,7 +76,7 @@ void		ft_unsignedintright(unsigned long long num, t_format form)
 
 void		ft_flagunsignedint(unsigned long long num, char *ss)
 {
-	t_format		form;
+	t_format	form;
 
 	form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
 	form.width = ft_parse_width(ss);

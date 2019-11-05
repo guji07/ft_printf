@@ -1,12 +1,15 @@
-SRCS = flag_unsignedint.c  ft_flagf.c          ft_flagx.c        ft_memalloc.c  ft_putnstr.c    ft_reverse.c         ft_strlen.c \
-       ft_atoi.c           ft_flagp.c          ft_intlen.c       ft_printf.c    ft_putstr.c     ft_strchr.c          ft_swap.c     parsers.c \
-       flag_int.c          ft_bzero.c          ft_flagpercent.c  ft_itoabase.c  ft_putchar.c    ft_putunsignednbr.c  ft_strequ.c   ft_unsignedintlen.c \
-       flag_o.c            ft_flagchar.c       ft_flagstr.c      ft_max.c       ft_putnbrpos.c  ft_putupstr.c        ft_strjoin.c  ft_write.c \
+SRCS = flag_char.c	flag_f2.c	flag_o.c	flag_percent.c	flag_unsignedint.c	ft_atoi.c		ft_flagx2.c    \
+	   ft_itoabase.c	ft_memalloc.c	ft_putchar.c	ft_putnstr.c	ft_putunsignednbr.c		ft_reverse.c   \
+	   ft_strequ.c	ft_strjoinfree.c	ft_swap.c      	ft_write.c		parsers.c	flag_f1.c	flag_int.c     \
+	   flag_p.c		flag_str.c	flag_x1.c	ft_bzero.c	ft_intlen.c		ft_max.c	ft_printf.c	ft_putnbrpos.c \
+	   ft_putstr.c  ft_putupstr.c ft_strchr.c ft_strjoin.c ft_strlen.c  ft_unsignedintlen.c                    \
 
-OBJECTS	= flag_unsignedint.o  ft_flagf.o          ft_flagx.o        ft_memalloc.o  ft_putnstr.o    ft_reverse.o         ft_strlen.o \
-          ft_atoi.o           ft_flagp.o          ft_intlen.o       ft_printf.o    ft_putstr.o     ft_strchr.o          ft_swap.o     parsers.o \
-          flag_int.o          ft_bzero.o          ft_flagpercent.o  ft_itoabase.o  ft_putchar.o    ft_putunsignednbr.o  ft_strequ.o   ft_unsignedintlen.o \
-          flag_o.o            ft_flagchar.o       ft_flagstr.o      ft_max.o       ft_putnbrpos.o  ft_putupstr.o        ft_strjoin.o  ft_write.o \
+OBJECTS	= flag_char.o	flag_f2.o	flag_o.o	flag_percent.o	flag_unsignedint.o	ft_atoi.o		ft_flagx2.o    \
+          ft_itoabase.o	ft_memalloc.o	ft_putchar.o	ft_putnstr.o	ft_putunsignednbr.o		ft_reverse.o   \
+          ft_strequ.o	ft_strjoinfree.o	ft_swap.o      	ft_write.o		parsers.o	flag_f1.o	flag_int.o     \
+          flag_p.o		flag_str.o	flag_x1.o	ft_bzero.o	ft_intlen.o		ft_max.o	ft_printf.o	ft_putnbrpos.o \
+          ft_putstr.o  ft_putupstr.o ft_strchr.o ft_strjoin.o ft_strlen.o  ft_unsignedintlen.o                    \
+
 HEADER = libft.h
 FLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a

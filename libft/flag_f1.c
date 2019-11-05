@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flagf1.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/05 21:40:13 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/05 21:40:00 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void		ft_putfloatleft(char *ss, char *num, t_format form)
@@ -27,19 +39,6 @@ void		ft_putfloatleft(char *ss, char *num, t_format form)
 		ft_putchar(' ');
 }
 
-void		ft_k2(t_format form, char *num, char *ss)
-{
-	if ((PLUS || num[0] == '-') && !ZERO)
-	{
-		ft_putchar(num[0] == '-' ? '-' : '+');
-		if (num[0] == '-')
-			num += 1;
-	}
-	ft_putstr(num);
-	if (HASHTAG && ft_parse_precision(ss) == 0)
-		ft_putchar('.');
-}
-
 void		ft_putfloatright(char *ss, char *num, t_format form)
 {
 	int 			width;
@@ -66,39 +65,6 @@ void		ft_putfloatright(char *ss, char *num, t_format form)
 	ft_k2(form, num, ss);
 }
 
-double 		ft_okrug(int i)
-{
-	double		k;
-
-	k = 0.5;
-	while (i-- > 0)
-		k *= 0.1;
-	return (k);
-}
-
-char		*ft_k3(long double *num, t_format form)
-{
-	char	*buf;
-
-	buf = (char*)malloc(23);
-	if (*num < 0)
-	{
-		*num *= -1;
-		buf[0] = '-';
-		*num += (double)ft_okrug(form.precision);
-		ft_itoabaseunsigned((unsigned long long)*num, buf + 1, 10);
-	}
-	else
-	{
-		*num += (double)ft_okrug(form.precision);
-		ft_itoabaseunsigned((unsigned long long)*num, buf, 10);
-	}
-	*num = *num - ((size_t)*num);
-	if (form.precision)
-		buf[ft_strlen(buf)] = '.';
-	return (buf);
-}
-
 void		ft_double(char *ss, long double num)
 {
 	char		*buf;
@@ -114,8 +80,7 @@ void		ft_double(char *ss, long double num)
 		*c = (char)(((size_t)num % 10) + '0');
 		num = num - (double)((size_t)num * 10 / 10);
 		*(c + 1) = '\0';
-		free(buf);
-		buf = ft_strjoin(buf, c);
+		buf = ft_strjoinfree(buf, c);
 	}
 	form.precision = ft_parse_precision(ss) >= 0 ? ft_parse_precision(ss) : 6;
 	if (!MINUS)
