@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void		ft_putfloatleft(char *ss, char *num, t_format form)
 {

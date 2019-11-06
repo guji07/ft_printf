@@ -6,11 +6,11 @@
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 09:17:17 by tgarkbit          #+#    #+#             */
-/*   Updated: 2019/11/06 09:17:19 by tgarkbit         ###   ########.fr       */
+/*   Updated: 2019/11/06 11:15:33 by tgarkbit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
 void				ft_octetleft(char *str, t_format form)
 {
@@ -73,7 +73,8 @@ void				ft_writezeros(char *str, t_format form)
 	i = -1;
 	if (!MINUS)
 	{
-		while (++i < form.width - ft_max(form.precision,(str[0] == '0' && !HASHTAG) ? 0 : ft_strlen(str)))
+		while (++i < form.width - ft_max(form.precision, (str[0] == '0'
+						&& !HASHTAG) ? 0 : ft_strlen(str)))
 			ft_write(" ", 1);
 		if (HASHTAG)
 			ft_write("0", 1);

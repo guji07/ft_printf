@@ -10,7 +10,7 @@ OBJECTS	= flag_char.o	flag_f2.o	flag_o.o	flag_percent.o	flag_unsignedint.o	ft_at
           flag_p.o		flag_str.o	flag_x1.o	ft_bzero.o	ft_intlen.o		ft_max.o	ft_printf.o	ft_putnbrpos.o \
           ft_putstr.o  ft_putupstr.o ft_strchr.o ft_strjoin.o ft_strlen.o  ft_unsignedintlen.o                    \
 
-HEADER = libft.h
+HEADER = libftprintf.h
 FLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a
 all: $(NAME)
