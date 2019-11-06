@@ -14,7 +14,7 @@
 
 int				ft_format(char *ss, va_list ap)
 {
-	int 	type;
+	int		type;
 
 	if ((type = ft_parse_name(ss)))
 	{
@@ -29,11 +29,9 @@ int				ft_format(char *ss, va_list ap)
 		else if (type == 50)
 			ft_octet(ss, ap);
 		else if (type == 60)
-            ft_ptet(ss, ap);
-		else if (type == 70)
-			ft_xtet(ss, ap, 1);
-		else if (type == 80)
-			ft_xtet(ss, ap, 2);
+			ft_ptet(ss, ap);
+		else if (type == 70 || type == 80)
+			ft_xtet(ss, ap, type == 70 ? 1 : 2);
 		else if (type == 90)
 			ft_float(ss, ap);
 		else if (type == 100)
@@ -42,14 +40,14 @@ int				ft_format(char *ss, va_list ap)
 	return (ft_len_to_type(ss));
 }
 
-int				ft_printf(char* str, ...)
+int				ft_printf(char *str, ...)
 {
 	int			i;
 	va_list		ap;
 
 	if (!str)
 		return (0);
-	kolvo = 0;
+	g_kolvo = 0;
 	i = 0;
 	va_start(ap, str);
 	while (str[i])
@@ -60,5 +58,5 @@ int				ft_printf(char* str, ...)
 			i = i + ft_format(str + i, ap);
 		i++;
 	}
-	return (kolvo);
+	return (g_kolvo);
 }

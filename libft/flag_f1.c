@@ -14,10 +14,11 @@
 
 void		ft_putfloatleft(char *ss, char *num, t_format form)
 {
-	int 			width;
+	int			width;
 
 	form.width = ft_parse_width(ss);
-	width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
+	width = (int)(form.width > (int)ft_strlen(num) ?
+			form.width - ft_strlen(num) : 0);
 	if (SPACE && !PLUS && num[0] != '-')
 	{
 		ft_putchar(' ');
@@ -41,7 +42,7 @@ void		ft_putfloatleft(char *ss, char *num, t_format form)
 
 void		ft_putfloatright(char *ss, char *num, t_format form)
 {
-	int 			width;
+	int		width;
 
 	form.width = ft_parse_width(ss);
 	if (SPACE && !PLUS && num[0] != '-')
@@ -55,10 +56,12 @@ void		ft_putfloatright(char *ss, char *num, t_format form)
 		ft_putchar(num[0] == '-' ? '-' : '+');
 		if (num[0] == '-')
 			num += 1;
-		width = (int)(form.width > (int)ft_strlen(num) + 1 ? form.width - ft_strlen(num) - 1 : 0);
+		width = (int)(form.width > (int)ft_strlen(num) +
+				1 ? form.width - ft_strlen(num) - 1 : 0);
 	}
 	else
-		width = (int)(form.width > (int)ft_strlen(num) ? form.width - ft_strlen(num) : 0);
+		width = (int)(form.width > (int)ft_strlen(num) ?
+				form.width - ft_strlen(num) : 0);
 	width -= (HASHTAG ? 1 : 0);
 	while (width-- > 0 + (PLUS && !ZERO && num[0] != '-'))
 		ft_putchar(ZERO ? '0' : ' ');
@@ -93,7 +96,7 @@ void		ft_double(char *ss, long double num)
 
 void		ft_float(char *ss, va_list ap)
 {
-	int 	size;
+	int		size;
 
 	size = ft_parse_size(ss);
 	if (size == 5)

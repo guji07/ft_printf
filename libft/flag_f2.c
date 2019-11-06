@@ -12,6 +12,20 @@
 
 #include "libft.h"
 
+int			ft_parse_precision(char *ss)
+{
+	int		i;
+	int		len;
+
+	i = 0;
+	len = ft_len_to_type(ss);
+	while (ss[i] && ss[i] != '.' && i < len)
+		i++;
+	if (ss[i] == '.')
+		return (ft_atoi(ss + i + 1));
+	return (-1);
+}
+
 void		ft_k2(t_format form, char *num, char *ss)
 {
 	if ((PLUS || num[0] == '-') && !ZERO)
@@ -48,7 +62,7 @@ char		*ft_k3(long double *num, t_format form)
 	return (buf);
 }
 
-double 		ft_okrug(int i)
+double		ft_okrug(int i)
 {
 	double		k;
 

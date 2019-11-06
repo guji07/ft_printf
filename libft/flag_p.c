@@ -33,9 +33,10 @@ void				ft_ptetleft(char *str, t_format form, char *ss)
 	}
 }
 
-void 				ft_k5(int width, t_format form, int len, char *str)
+void				ft_k5(int width, t_format form, int len, char *str)
 {
-	while ((width++ < form.width - len) && (form.precision > len || (ZERO && form.precision == -1)))
+	while ((width++ < form.width - len) &&
+	(form.precision > len || (ZERO && form.precision == -1)))
 		ft_write("0", 1);
 	ft_putstr("0x");
 	if (str[0] != '0' || form.precision == 1)
@@ -55,7 +56,8 @@ void				ft_ptetright(char *str, t_format form)
 	max = ft_max(form.precision, len);
 	if (form.width < max)
 		form.width = max;
-	while ((++width < form.width - max - PLUS) && !(ZERO && form.precision == -1))
+	while ((++width < form.width - max - PLUS)
+	&& !(ZERO && form.precision == -1))
 		ft_write(" ", 1);
 	if (form.precision == 0 && str[0] == '0'
 			&& str[1] == '\0' && !ft_strequ("0", str))
@@ -93,13 +95,13 @@ void				ft_ptet(char *ss, va_list ap)
 	int						size;
 
 	size = ft_parse_size(ss);
-	if (size == h)
+	if (size == H)
 		ft_flagptet((unsigned short int)va_arg(ap, unsigned int), ss);
-	else if (size == hh)
+	else if (size == HH)
 		ft_flagptet((unsigned char)va_arg(ap, unsigned int), ss);
-	else if (size == l)
+	else if (size == L)
 		ft_flagptet((unsigned long int)va_arg(ap, unsigned long int), ss);
-	else if (size == ll || ft_parse_name(ss) == 60)
+	else if (size == LL || ft_parse_name(ss) == 60)
 		ft_flagptet(va_arg(ap, unsigned long long int), ss);
 	else if (size == 0)
 		ft_flagptet(va_arg(ap, unsigned int), ss);

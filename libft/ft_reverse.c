@@ -12,13 +12,16 @@
 
 #include "libft.h"
 
-void 	reverse(char str[], int length)
+void		reverse(char str[], int length)
 {
-	int start = 0;
-	int end = length - 1;
+	int start;
+	int end;
+
+	start = 0;
+	end = length - 1;
 	while (start < end)
 	{
-		ft_memswap(str+start, str+end);
+		ft_memswap(str + start, str + end);
 		start++;
 		end--;
 	}

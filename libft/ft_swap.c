@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void 	ft_memswap(char *s1,char *s2)
+void		ft_memswap(char *s1, char *s2)
 {
-	char s[1];
+	char	s[1];
 
 	s[0] = *s1;
 	*s1 = *s2;

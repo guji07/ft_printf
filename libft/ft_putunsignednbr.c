@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-static	int	ft_uwhtnbr(unsigned long long num)
+static		int		ft_uwhtnbr(unsigned long long num)
 {
-	int		i;
-	unsigned long long k;
+	int					i;
+	unsigned long long	k;
 
 	k = -9223372036854775808U;
 	i = 0;
@@ -47,9 +47,9 @@ static		void	ft_uscreen(unsigned long long nb)
 	}
 }
 
-void			ft_putunsignednbrpos(unsigned long long nb)
+void				ft_putunsignednbrpos(unsigned long long nb)
 {
-	int 	flag;
+	int		flag;
 
 	flag = ft_uwhtnbr(nb);
 	if (flag == 0)

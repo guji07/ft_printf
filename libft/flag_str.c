@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*      flag_str.c                                      :+:      :+:    :+:   */
+/*   flag_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 21:40:13 by tgarkbit          #+#    #+#             */
-/*   Updated: 2019/11/05 21:40:00 by tgarkbit         ###   ########.fr       */
+/*   Created: 2019/11/06 09:19:27 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/06 09:19:29 by tgarkbit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ void	writestrings(char *str, t_format form, int i)
 		ft_putnstr(str, form.precision);
 	}
 	free(form.flag);
-
 }
 
-void 	ft_flagstr(char *str, char *ss)
+void	ft_flagstr(char *str, char *ss)
 {
 	t_format	form;
 	int			i;
@@ -43,7 +42,8 @@ void 	ft_flagstr(char *str, char *ss)
 		form.width = ft_parse_width(ss);
 		form.precision = (int)(ft_parse_precision(ss));
 		form.flag = ft_parse_flag(ft_len_to_type(ss), ss);
-		i += (((form.precision > n) || (form.precision == -1)) ? n : form.precision);
+		i += (((form.precision > n) ||
+				(form.precision == -1)) ? n : form.precision);
 		writestrings(str, form, i);
 	}
 	else

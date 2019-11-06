@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flag_int.c                                        :+:      :+:    :+:   */
+/*   flag_int.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/05 21:40:13 by tgarkbit          #+#    #+#             */
-/*   Updated: 2019/11/05 21:40:00 by tgarkbit         ###   ########.fr       */
+/*   Created: 2019/11/06 09:16:53 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/06 09:16:54 by tgarkbit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void		ft_int(char *ss, va_list ap)
 	int				size;
 
 	size = ft_parse_size(ss);
-	if (size == h)
+	if (size == H)
 		ft_flagint((short int)va_arg(ap, int), ss);
-	else if (size == hh)
+	else if (size == HH)
 		ft_flagint((signed char)va_arg(ap, int), ss);
-	else if (size == l)
+	else if (size == L)
 		ft_flagint((long int)va_arg(ap, long int), ss);
-	else if (size == ll)
+	else if (size == LL)
 		ft_flagint(va_arg(ap, long long int), ss);
 	else
 		ft_flagint(va_arg(ap, int), ss);
@@ -71,24 +71,19 @@ void		ft_intright(long long num, t_format form)
 	int		max;
 	int		len;
 
-	len = ft_intlen(num);
-	if (!form.precision && num == 0)
-		len = 0;
+	len = ((!form.precision && num == 0) ? 0 : ft_intlen(num));
 	if (SPACE && !PLUS && num >= 0)
 	{
 		ft_write(" ", 1);
 		form.width--;
 	}
 	max = ft_max(form.precision, len);
-	width = 0;
+	width = -1;
 	if (form.width < max)
 		form.width = max;
-	while ((width < form.width - max -
+	while ((++width < form.width - max -
 	ft_max(PLUS, num < 0)) && !(ZERO && form.precision == -1))
-	{
 		ft_write(" ", 1);
-		width++;
-	}
 	width += ft_sing(PLUS, num);
 	if (form.precision >= form.width && (PLUS || (num < 0)))
 		width--;

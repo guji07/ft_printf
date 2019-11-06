@@ -20,7 +20,7 @@ void				ft_xtetleft(char *str, t_format form, int mode)
 
 	len = ft_strlen(str);
 	precision = ft_max(form.precision, len);
-	width = form.width - precision - 1;
+	width = form.width - precision;
 	if (HASHTAG && str[0] != '0')
 	{
 		ft_putstr(mode == 2 ? "0X" : "0x");
@@ -35,7 +35,7 @@ void				ft_xtetleft(char *str, t_format form, int mode)
 		ft_putstr(str);
 	else
 		ft_putupstr(str);
-	while (--width > 0)
+	while (width-- > 0)
 		ft_write(" ", 1);
 }
 
@@ -47,18 +47,18 @@ void				ft_xtetright(char *str, t_format form, int mode)
 
 	len = ft_strlen(str);
 	precision = ft_max(form.precision, len);
-	width = form.width - precision - 1;
+	width = form.width - precision;
 	if (HASHTAG && str[0] != '0')
 		width -= 2;
 	if ((ZERO && form.precision == -1))
 		if (HASHTAG && str[0] != '0')
 			ft_putstr(mode == 2 ? "0X" : "0x");
-	while (--width > 0)
+	while (width-- > 0)
 		ft_write((ZERO && form.precision == -1) ? "0" : " ", 1);
 	if (!(ZERO && form.precision == -1))
 		if (HASHTAG && str[0] != '0')
 			ft_putstr(mode == 2 ? "0X" : "0x");
-	while ((precision--)- len)
+	while (precision-- - len)
 		ft_write("0", 1);
 	if (mode == 2)
 		ft_putupstr(str);
@@ -66,7 +66,7 @@ void				ft_xtetright(char *str, t_format form, int mode)
 		ft_putstr(str);
 }
 
-int 				ft_checkzero(char *ss)
+int					ft_checkzero(char *ss)
 {
 	int		i;
 	int		len;
@@ -118,13 +118,13 @@ void				ft_xtet(char *ss, va_list ap, int mode)
 	int		size;
 
 	size = ft_parse_size(ss);
-	if (size == h)
+	if (size == H)
 		ft_flagxtet((unsigned short int)va_arg(ap, unsigned int), ss, mode);
-	else if (size == hh)
+	else if (size == HH)
 		ft_flagxtet((unsigned char)va_arg(ap, unsigned int), ss, mode);
-	else if (size == l)
+	else if (size == L)
 		ft_flagxtet((unsigned long int)va_arg(ap, unsigned long int), ss, mode);
-	else if (size == ll || ft_parse_name(ss) == 60)
+	else if (size == LL || ft_parse_name(ss) == 60)
 		ft_flagxtet(va_arg(ap, unsigned long long int), ss, mode);
 	else if (size == 0)
 		ft_flagxtet(va_arg(ap, unsigned int), ss, mode);

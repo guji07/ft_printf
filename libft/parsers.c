@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tgarkbit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/06 09:26:48 by tgarkbit          #+#    #+#             */
+/*   Updated: 2019/11/06 09:28:05 by tgarkbit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int 		ft_parse_size(char *ss)
+int			ft_parse_size(char *ss)
 {
-	int 	i;
-	int 	n;
+	int		i;
+	int		n;
 
 	n = ft_len_to_type(ss);
 	i = -1;
@@ -27,26 +39,13 @@ int 		ft_parse_size(char *ss)
 	return (0);
 }
 
-int 		ft_parse_precision(char *ss)
+int			ft_parse_width(char *ss)
 {
-	int 	i;
-	int 	len;
-
-	i = 0;
-	len = ft_len_to_type(ss);
-	while (ss[i] && ss[i] != '.' && i < len)
-		i++;
-	if (ss[i] == '.')
-		return (ft_atoi(ss + i + 1));
-	return (-1);
-}
-
-int 		ft_parse_width(char *ss)
-{
-	int 	i;
+	int		i;
 
 	i = 1;
-	while ((ss[i] == '0' || ss[i] == '+' || ss[i] == ' ' || ss[i] == '-' || ss[i] == '#') && ss[i])
+	while ((ss[i] == '0' || ss[i] == '+' ||
+	ss[i] == ' ' || ss[i] == '-' || ss[i] == '#') && ss[i])
 		i++;
 	if (ss[i] && (ss[i] >= '0' && ss[i] <= '9'))
 		return (ft_atoi(ss + i));
@@ -79,9 +78,9 @@ int			*ft_parse_flag(int num, char *ss)
 	return (flag);
 }
 
-int 		ft_len_to_type(char *s)
+int			ft_len_to_type(char *s)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (s[++i])
@@ -100,23 +99,19 @@ int 		ft_len_to_type(char *s)
 	return (0);
 }
 
-int 		ft_parse_name(char *s)
+int			ft_parse_name(char *s)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (s[++i])
 	{
-		if (s[i] == 'c')
-			return (10);
-		if (s[i] == 's')
-			return (20);
+		if (s[i] == 'c' || s[i] == 's')
+			return (s[i] == 'c' ? 10 : 20);
 		if (s[i] == 'd' || s[i] == 'i')
 			return (30);
-		if (s[i] == 'u')
-			return (40);
-		if (s[i] == 'o')
-			return (50);
+		if (s[i] == 'u' || s[i] == 'o')
+			return (s[i] == 'u' ? 40 : 50);
 		if (s[i] == 'p')
 			return (60);
 		if (s[i] == 'x')

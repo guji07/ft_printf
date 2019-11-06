@@ -22,5 +22,5 @@ void		ft_putnstr(char *str, size_t n)
 		write(1, str + i, 1);
 		i++;
 	}
-	kolvo = kolvo + (int)i;
+	g_kolvo = g_kolvo + (int)i;
 }
